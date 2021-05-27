@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('business.index');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('business.index');
+
+
+
     Route::get('/admin', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.index');
     Route::get('/admin/create', \App\Http\Livewire\Admin\AdminAdd::class)->name('admin.create');
 
