@@ -22,13 +22,13 @@ class BusinessAdd extends Component
         'business.city_id' => 'required|string',
         'business.category_id' => 'required',
         'business.email' => 'required|email|unique:businesses,email',
-        'business.phone' => 'required|string|unique:businesses,phone',
+        'business.phone' => 'required|phone:ZM|unique:businesses,phone',
 
         //Admin information
         'provider.firstname' => 'required|string',
         'provider.lastname' => 'required|string',
         'provider.email' => 'required|email|unique:providers,email',
-        'provider.mobile' => 'required|string|unique:providers,mobile',
+        'provider.mobile' => 'required|phone:ZM|unique:providers,mobile',
 //        'provider.password' => 'required|confirmed',
     ];
 
