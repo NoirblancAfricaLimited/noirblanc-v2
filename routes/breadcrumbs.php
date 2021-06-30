@@ -31,7 +31,7 @@ Breadcrumbs::for('business.create', function ($trail) {
 
 Breadcrumbs::for('business.show', function ($trail, \App\Models\Business $business) {
     $trail->parent('business.index');
-    $trail->push($business->name);
+    $trail->push($business->name,route('business.show',$business));
     $trail->push('Details');
 });
 

@@ -7,7 +7,7 @@
     <td>{{$admin->lastname}}</td>
     <td>{{$admin->email}}</td>
     <td>{{$admin->mobile}}</td>
-    <td>{{$admin->created_at}}</td>
+    <td>{{$admin->created_at->toFormattedDateString()}}</td>
 
     <td class="pr-0 text-right">
         <a href="{{route('admin.edit',$admin)}}" class="btn btn-text-primary btn-sm btn-hover-light-primary"><i class="fa fa-edit"></i></a>

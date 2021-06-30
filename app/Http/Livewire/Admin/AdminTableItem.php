@@ -12,4 +12,8 @@ class AdminTableItem extends Component
     {
         return view('livewire.admin.admin-table-item');
     }
+
+    public function delete(){
+        $this->admin->delete();
+    }
 }

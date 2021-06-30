@@ -28,9 +28,9 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>City</th>
+                            <th>Mobile</th>
                             <th>E-mail</th>
-                            <th>Date Added</th>
-                            <th>Date Added</th>
+                            <th>Services</th>
                             <th>Date Added</th>
                             <th class="pr-0 text-right">Action</th>
                         </tr>

@@ -20,7 +20,8 @@ class GalleryIndex extends Component
 
     public function render()
     {
-        return view('livewire.gallery.gallery-index');
+        $gallery = $this->service->getMedia('gallery');
+        return view('livewire.gallery.gallery-index',compact('gallery'));
     }
 
     public function save()

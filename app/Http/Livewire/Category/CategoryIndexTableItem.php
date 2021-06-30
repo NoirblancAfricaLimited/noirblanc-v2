@@ -36,6 +36,6 @@ class CategoryIndexTableItem extends Component
 
     public function remove(){
         $this->category->delete();
-        $this->redirect(route('category.index'));
+        $this->emit('message','Category deleted Successfully');
     }
 }

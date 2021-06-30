@@ -22,6 +22,7 @@
 
             <!--begin::Table-->
                 <div class="table-responsive">
+                    {{$categories->links()}}
                     <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
                         <thead>
                         <tr class="text-left">

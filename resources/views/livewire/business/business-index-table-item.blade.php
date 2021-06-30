@@ -12,11 +12,11 @@
     <td class="pt-7">{{$business->category->name}}</td>
     <td class="pt-7">{{$business->phone}}</td>
     <td class="pt-7 ">{{$business->email}}</td>
-    <td class="pt-7 text-{{$this->color}}">{{$business->status}}</td>
+    <td class="pt-7">{{$business->services_count}}</td>
     <td class="pt-7">{{$business->created_at->toFormattedDateString()}}</td>
 
     <td class="pr-0 text-right">
-        <a href="{{route('business.service.index',$business)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+        <a href="{{route('business.service.index',$business)}}" title="View Business Details" class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -30,7 +30,7 @@
             fill="#000000" opacity="0.3"/>
     </g>
 </svg><!--end::Svg Icon--></span> </a>
-        <a href="{{route('business.edit',$business)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+        <a href="{{route('business.edit',$business)}}" title="Edit Business Details" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -45,7 +45,7 @@
             fill="#000000" fill-rule="nonzero" opacity="0.3"/>
     </g>
 </svg><!--end::Svg Icon--></span> </a>
-        <button type="button" class="btn btn-icon btn-light btn-hover-primary btn-sm" wire:click="remove">
+        <button type="button" title="Delete Business" class="btn btn-icon btn-light btn-hover-primary btn-sm" wire:click="remove">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

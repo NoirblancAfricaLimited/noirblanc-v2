@@ -10,9 +10,18 @@ class Booking extends Model
 {
     use HasFactory, HasStatuses;
 
-    protected $casts = [
-        'start_at' => 'datetime:Y-m-d',
-        'end_at' => 'datetime:Y-m-d',
+    protected $guarded = [];
+
+    protected $dates = [
+        'start_at',
+        'end_at',
     ];
 
+    public function Customer(){
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function service(){
+        return $this->belongsTo(Service::class);
+    }
 }

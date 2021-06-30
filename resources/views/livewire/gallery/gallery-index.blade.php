@@ -13,7 +13,7 @@
 
         <form wire:submit.prevent="save">
             <input type="file" wire:model="photos" multiple/>
-            <button type="submit" class="btn btn-primary mr-2" wire:loading.attr="disable">Add Photos</button>
+            <button type="submit" class="btn btn-primary mr-2" wire:target='save' wire:loading.attr="disable" wire:loading.class="spinner spinner-right spinner-white">Add Photos</button>
         </form>
 
 {{--        <div class="separator separator-dashed mb-20"></div>--}}
@@ -21,7 +21,7 @@
 
     <div class="col-lg-12">
         <div class="row mt-10">
-            @foreach($service->getMedia('gallery') as $media)
+            @foreach($gallery as $media)
                 <livewire:gallery.gallery-index-item :media="$media" :key="$media->id"/>
             @endforeach
         </div>

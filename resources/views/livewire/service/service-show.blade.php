@@ -96,7 +96,7 @@
 
             <!--begin::Tab-->
             <div class="tab-pane px-7" id="kt_user_edit_tab_2" role="tabpanel">
-             <livewire:booking.booking-index/>
+             <livewire:booking.booking-index :service="$service"/>
             </div>
             <!--end::Tab-->
 

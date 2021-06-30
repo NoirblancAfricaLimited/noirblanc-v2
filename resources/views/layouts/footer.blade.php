@@ -21,6 +21,7 @@
 <script src="{{asset('')}}js/pages/widgets.js"></script>
 {{--<script src="{{asset('')}}js/pages/crud/forms/widgets/bootstrap-timepicker.js"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" ></script>
+<script src="{{asset('')}}js/pages/crud/forms/widgets/bootstrap-datetimepicker.js" ></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 <script src="{{asset('')}}js/add-user.js"></script>
 
@@ -29,7 +30,6 @@
 <script>
 
     jQuery(document).ready(function() {
-        $('.time-picker').timepicker();
 
         arrows = {
             leftArrow: '<i class="la la-angle-left"></i>',
@@ -41,6 +41,28 @@
             orientation: "bottom left",
             templates: arrows
         });
+
+        $('.time-picker').timepicker({
+            minuteStep: 1,
+            defaultTime: '',
+            showSeconds: false,
+            showMeridian: false,
+            snapToStep: true,
+            icons: {
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down'
+            }
+        })
+
+        $('.datetimepicker').datetimepicker({
+            // format: 'LT',
+            inline: true,
+            sideBySide: true,
+            minDate: moment().seconds(0).minutes(0),
+            showSeconds: false,
+
+        });
+
     });
 
     Livewire.on('message', (type, message) => {
@@ -63,7 +85,8 @@
         };
 
 
-        toastr.info(message,"Shopping Cart" );
+
+        toastr.info(message);
     })
 
 </script>

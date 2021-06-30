@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.index');
     Route::get('/admin/create', \App\Http\Livewire\Admin\AdminAdd::class)->name('admin.create');
 
-    Route::get('/admin/{admin}/edit', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.edit');
+    Route::get('/admin/{admin}/edit', \App\Http\Livewire\Admin\AdminEdit::class)->name('admin.edit');
 
     //Providers
     Route::get('/provider', \App\Http\Livewire\Providers\ProviderIndex::class)->name('provider.index');

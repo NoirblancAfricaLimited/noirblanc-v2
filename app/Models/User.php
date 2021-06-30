@@ -20,8 +20,13 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'email',
+        'mobile',
         'password',
         'mobile',
+    ];
+
+    protected $appends = [
+        'fullname'
     ];
 
     /**
@@ -42,4 +47,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function getFullnameAttribute(){
+        return "{$this->firstname}, {$this->lastname}";
+    }
 }

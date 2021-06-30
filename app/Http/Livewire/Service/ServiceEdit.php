@@ -13,10 +13,10 @@ class ServiceEdit extends Component
 
     protected $rules = [
         'service.description' => 'required|string',
-        'service.category_id' => 'required|numeric',
+        'service.sub_category_id' => 'required|numeric',
         'service.price' => 'required|string',
-        'service.open_at' => 'required',
-        'service.close_at' => 'required',
+//        'service.open_at' => 'required',
+//        'service.close_at' => 'required',
     ];
 
     public function mount(Service $service)
@@ -27,7 +27,8 @@ class ServiceEdit extends Component
 
     public function render()
     {
-        $categories = Category::all();
+//        dd($this->service->business->category);
+        $categories = $this->service->business->category->sub_categories()->get();
 
         return view('livewire.service.service-edit', compact('categories'));
     }

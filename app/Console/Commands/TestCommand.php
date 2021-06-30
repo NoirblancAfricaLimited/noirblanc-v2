@@ -45,17 +45,11 @@ class TestCommand extends Command
     public function handle()
     {
 
-        $customer = Customer::firstOrCreate(
-            ['email' => 'john.doe@gmail.com'],
-            [
-                'firstname' => 'John',
-                'lastname' => 'Doe',
-                'mobile' => '0977634317',
-                'email' => 'john.doe@gmail.com',
-                'password' => Hash::make('Welcome1')
-            ]);
-
-        Customer::factory()->count(50)->create();
+        foreach (Business::all() as $user){
+//            $request->erm_id = User::where('positions_id', env('ERM_POSITION_ID'))->first()->id;
+//            $request->save();
+            $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
+        }
 
     }
 }

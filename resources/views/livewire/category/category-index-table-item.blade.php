@@ -9,7 +9,7 @@
         <span class="text-primary">{{$category->name}}</span>
     </td>
 
-    <td class="pt-7 text-{{$this->color}}">{{$category->status}}</td>
+    <td class="pt-7 text-{{$category->deleted_at ? 'danger':'success'}}">{{$category->deleted_at ? 'deleted':'active'}}</td>
     <td class="pt-7">{{$category->created_at->toFormattedDateString()}}</td>
 
     <td class="pr-0 text-right">

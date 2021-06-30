@@ -7,8 +7,8 @@
             {{--            </div>--}}
 
             <div>
-                <a href="#"
-                   class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$service->category->name}}</a>
+                <a href="{{route('business.service.show',$service)}}"
+                   class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$service->sub_category->name}}</a>
 {{--                <span class="text-muted font-weight-bold d-block">{{$service->category->name}}</span>--}}
             </div>
         </div>
@@ -21,24 +21,19 @@
 {{--                                @currency('USD')--}}
 {{--                            </span>--}}
     </td>
-    <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                {{$service->open_at}}
-                            </span>
+{{--    <td>--}}
+{{--                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">--}}
+{{--                                {{$service->open_at}}--}}
+{{--                            </span>--}}
 
-{{--        <span class="text-muted font-weight-bold">--}}
-{{--                                Paid--}}
-{{--                            </span>--}}
-    </td>
+{{--    </td>--}}
+{{--    <td>--}}
+{{--                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">--}}
+{{-- {{$service->close_at}}                            </span>--}}
+
+{{--    </td>--}}
     <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
- {{$service->close_at}}                            </span>
-{{--        <span class="text-muted font-weight-bold">--}}
-{{--                                Insurance--}}
-{{--                            </span>--}}
-    </td>
-    <td>
-        <span class="label label-lg label-light-primary label-inline">{{$service->status}}</span>
+        <span class="text-wrap">{{$service->description}}</span>
     </td>
     <td class="text-right pr-0">
         <a href="{{route('business.service.show',$service)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">

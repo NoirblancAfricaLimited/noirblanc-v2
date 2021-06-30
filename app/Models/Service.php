@@ -12,26 +12,31 @@ use Spatie\ModelStatus\HasStatuses;
 
 class Service extends Model implements HasMedia
 {
-    use HasFactory, HasStatuses, HasReviewRating, InteractsWithMedia,HasVouchers ;
+    use HasFactory, HasStatuses, HasReviewRating, InteractsWithMedia, HasVouchers;
 
     protected $guarded = [];
 
     protected $with = [
-        'category'
+        'sub_category'
     ];
 
     public function getNameAttribute()
     {
-        return $this->category->name;
+        return $this->sub_category->name;
     }
 
-    public function category()
+    public function sub_category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(SubCategory::class);
     }
 
     public function business()
     {
         return $this->belongsTo(Business::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

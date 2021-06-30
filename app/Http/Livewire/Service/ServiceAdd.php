@@ -14,10 +14,10 @@ class ServiceAdd extends Component
 
     protected $rules = [
         'service.description' => 'required|string',
-        'service.category_id' => 'required|string',
-        'service.price' => 'required|string',
-        'service.open_at' => 'required',
-        'service.close_at' => 'required',
+        'service.sub_category_id' => 'required',
+        'service.price' => 'required|numeric',
+//        'service.open_at' => 'required',
+//        'service.close_at' => 'required',
     ];
 
     public function mount()
@@ -28,8 +28,8 @@ class ServiceAdd extends Component
 
     public function render()
     {
-        $categories = Category::all();
 
+        $categories = $this->business->category->sub_categories()->get();
         return view('livewire.service.service-add', compact('categories'));
     }
 

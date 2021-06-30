@@ -39,14 +39,14 @@
                         <th style="min-width: 250px" class="pl-7"><span
                                 class="text-dark-75">Name</span></th>
                         <th style="min-width: 100px">Price</th>
-                        <th style="min-width: 100px">Open At</th>
-                        <th style="min-width: 100px">Close At</th>
-                        <th style="min-width: 130px">status</th>
+                        <th style="min-width: 100px">Description</th>
+{{--                        <th style="min-width: 100px">Close At</th>--}}
+{{--                        <th style="min-width: 130px">status</th>--}}
                         <th style="min-width: 120px"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($business->services as $service)
+                    @foreach($services as $service)
                         <livewire:service.service-index-table-item :service="$service" :key="$service->id"/>
                     @endforeach
                     </tbody>
@@ -65,3 +65,4 @@
         </div>
     </div>
 @endsection
+

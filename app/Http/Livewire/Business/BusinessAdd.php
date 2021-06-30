@@ -52,6 +52,7 @@ class BusinessAdd extends Component
         $this->provider->password = Hash::make('Welcome1');
 
         $this->business->save();
+        $this->business->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
         $this->business->setStatus('active');
         $this->business->provider()->save($this->provider);
         $this->redirect(route('business.index'));

@@ -20,6 +20,7 @@ class ServiceIndex extends Component
 
     public function render()
     {
-        return view('livewire.service.service-index');
+        $services = $this->business->services()->get();
+        return view('livewire.service.service-index',compact('services'));
     }
 }
