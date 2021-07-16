@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('business.index');
+    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('home');
 
 
 

@@ -19,6 +19,10 @@ Breadcrumbs::for('provider.index', function ($trail) {
     $trail->push('Providers', route('provider.index'));
 });
 
+Breadcrumbs::for('home', function ($trail) {
+    $trail->push('Businesses', route('home'));
+});
+
 
 Breadcrumbs::for('business.index', function ($trail) {
     $trail->push('Businesses', route('business.index'));
