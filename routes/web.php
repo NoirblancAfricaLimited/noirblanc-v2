@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/category', \App\Http\Livewire\Category\CategoryIndex::class)->name('category.index');
     Route::get('/category/{category}/edit', \App\Http\Livewire\Category\CategoryEdit::class)->name('category.edit');
     Route::get('/category/create', \App\Http\Livewire\Category\CategoryAdd::class)->name('category.create');
+});
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/join', \App\Http\Livewire\Business\BusinessJoin::class)->name('business.join');
+
 });
