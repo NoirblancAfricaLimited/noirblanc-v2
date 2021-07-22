@@ -8,13 +8,18 @@ use App\Models\City;
 use App\Models\Provider;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class BusinessJoin extends Component
 {
+    use WithFileUploads;
 
     public Business $business;
 
     public Provider $provider;
+
+    public $avatar,$nrc,$certificates;
+
 
     protected $rules = [
         'business.name' => 'required|string',
@@ -29,7 +34,9 @@ class BusinessJoin extends Component
         'provider.lastname' => 'required|string',
         'provider.email' => 'required|email|unique:providers,email',
         'provider.mobile' => 'required|phone:ZM|unique:providers,mobile',
-//        'provider.password' => 'required|confirmed',
+        'avatar' => 'required|image',
+        'nrc' => 'required|image',
+        'certificates' => 'required|image',
     ];
 
     public function mount()
@@ -54,7 +61,10 @@ class BusinessJoin extends Component
         $this->business->save();
         $this->business->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
         $this->business->setStatus('pending');
-        $this->business->provider()->save($this->provider);
+        $provider = $this->business->provider()->save($this->provider);
+        $provider->addMediaFromUrl($this->avatar->temporaryUrl())->toMediaCollection('avatar');
+        $provider->addMediaFromUrl($this->nrc->temporaryUrl())->toMediaCollection('nrc');
+        $provider->addMediaFromUrl($this->certificates->temporaryUrl())->toMediaCollection('certificates');
         $this->redirect(route('business.join'));
     }
 }

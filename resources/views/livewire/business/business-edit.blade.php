@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                        <div class="row">
+                    <div class="row">
                             <label class="col-12 col-form-label"></label>
                             <div class="col-lg-9 col-xl-6">
                                 <div class="image-input image-input-outline image-input-circle" id="kt_profile_avatar"
@@ -31,7 +31,6 @@
                                         data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                         <input type="file" accept=".png, .jpg, .jpeg" wire:model="avatar"/>
-                                        {{--                                        <input type="hidden" name="profile_avatar_remove"/>--}}
                                     </label>
 
                                     <span

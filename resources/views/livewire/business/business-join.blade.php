@@ -60,12 +60,7 @@
                 <!--begin::Body-->
                 <div class="card-body p-0">
 
-
-
                     <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-
-
-
                         <div class="col-xl-12 col-xxl-10">
                             <!--begin::Wizard Form-->
                             <form class="form" id="kt_form" wire:submit.prevent="save">
@@ -155,6 +150,35 @@
                                         <div class="my-5 step" data-wizard-type="step-content">
                                             <h5 class="text-dark font-weight-bold mb-10 mt-5">Create main user account for Business</h5>
 
+                                            <div class=" form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label"></label>
+                                                <div class="col-lg-9 col-xl-9">
+                                                    <div class="image-input image-input-outline image-input-circle" id="kt_profile_avatar"
+                                                         style="background-image: url('{{$avatar ?  $avatar->temporaryUrl() : asset('media/users/blank.png')}}')">
+
+                                                        <div class="image-input-wrapper"
+                                                             style="background-image: url('{{$avatar ? $avatar->temporaryUrl() : asset('media/users/blank.png')}}')"></div>
+
+                                                        <label
+                                                            class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                            data-action="change" data-toggle="tooltip" title=""
+                                                            data-original-title="Change avatar">
+                                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                                            <input type="file" accept=".png, .jpg, .jpeg" wire:model="avatar"/>
+                                                        </label>
+
+                                                        <span
+                                                            class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                            data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                </span>
+
+                                                        </span>
+                                                    </div>
+                                                    <span class="form-text text-muted">Allowed file types:  png, jpg, jpeg.</span>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">First name</label>
                                                 <div class="col-lg-9 col-xl-9">
@@ -195,6 +219,24 @@
                                                                wire:model.defer="provider.email"/>
 
                                                     </div>
+                                                    <span class="form-text text-muted">Contact E-mail for the business</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">NRC</label>
+                                                <div class="col-lg-9 col-xl-9">
+                                                    <input class="form-control form-control-solid form-control-lg"
+                                                           type="file" wire:model.defer="nrc"/>
+                                                    <span class="form-text text-muted">Contact E-mail for the business</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Certificates</label>
+                                                <div class="col-lg-9 col-xl-9">
+                                                    <input class="form-control form-control-solid form-control-lg"
+                                                           type="file" wire:model.defer="certificates" />
                                                     <span class="form-text text-muted">Contact E-mail for the business</span>
                                                 </div>
                                             </div>
