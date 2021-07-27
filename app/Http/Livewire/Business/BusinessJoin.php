@@ -36,7 +36,7 @@ class BusinessJoin extends Component
         'provider.mobile' => 'required|phone:ZM|unique:providers,mobile',
         'avatar' => 'required|image',
         'nrc' => 'required|image',
-        'certificates' => 'required|image',
+        'certificates' => 'sometimes|image',
     ];
 
     public function mount()
