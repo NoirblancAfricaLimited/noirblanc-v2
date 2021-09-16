@@ -30,6 +30,8 @@ class Business extends Model implements HasMedia
         'email',
     ];
 
+    protected $attributes = ['avatar'];
+
     public function registerMediaCollections(): void
     {
         $this

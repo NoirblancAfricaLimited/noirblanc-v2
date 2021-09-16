@@ -10,8 +10,17 @@ class Booking extends Model
 {
     use HasFactory, HasStatuses;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'description',
+        'start_at',
+//        'end_at',
+        'service_id',
+        'customer_id',
+    ];
 
+    protected $appends = [
+        'status'
+    ];
     protected $dates = [
         'start_at',
         'end_at',

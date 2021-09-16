@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('guest:api')->group(function () {
+
+    Route::prefix('customer')->group(function () {
+        Route::middleware('guest:api')->post('/login', [App\Http\Controllers\Customer\CustomerController::class, 'login']);
+    });
+    Route::apiResource('customer', App\Http\Controllers\Customer\CustomerController::class);
+
+    Route::apiResource('service', \App\Http\Controllers\Api\ServiceController::class);
+
+
+
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/service/{service}/customer/{customer}/booking', [\App\Http\Controllers\Api\BookingController::class, 'customer']);
+    Route::apiResource('service.booking', \App\Http\Controllers\Api\BookingController::class)->shallow();
 });

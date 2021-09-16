@@ -16,8 +16,12 @@ class Service extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $casts = [
+        'price' => 'double'
+    ];
+
     protected $with = [
-        'sub_category'
+        'sub_category.category',
     ];
 
     public function getNameAttribute()

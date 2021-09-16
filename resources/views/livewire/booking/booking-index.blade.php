@@ -58,7 +58,14 @@
                 eventLimit: true, // allow "more" link when too many events
                 navLinks: true,
                 events: @json($events),
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.title);
+                    alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                    alert('View: ' + info.view.type);
 
+                    // change the border color just for fun
+                    info.el.style.borderColor = 'red';
+                },
                 eventRender: function(info) {
                     var element = $(info.el);
 
@@ -76,8 +83,6 @@
                 }
             });
             calendar.render();
-
-
         });
 
 

@@ -17,7 +17,10 @@ class Provider extends Authenticatable implements HasMedia
         'firstname', 'lastname', 'email', 'mobile', 'password'
     ];
 
-
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
     public function registerMediaCollections(): void
     {
         $this
