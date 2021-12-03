@@ -22,6 +22,7 @@ class Service extends Model implements HasMedia
 
     protected $with = [
         'sub_category.category',
+        'business'
     ];
 
     public function getNameAttribute()

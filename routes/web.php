@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+//Route::middleware(['guest'])->group(function () {
+    Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
+//});
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('home');
-
-
+//    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('home');
 
     Route::get('/admin', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.index');
     Route::get('/admin/create', \App\Http\Livewire\Admin\AdminAdd::class)->name('admin.create');
