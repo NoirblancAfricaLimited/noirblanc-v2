@@ -8,7 +8,7 @@
     <!--begin::Section-->
     <div class="d-flex flex-column flex-grow-1">
         <!--begin::Title-->
-        <span class="font-weight-bolder font-size-lg text-primary mb-1">{{$customer->fullname}}</span>
+{{--        <span class="font-weight-bolder font-size-lg text-primary mb-1">{{$customer->fullname}}</span>--}}
         <!--end::Title-->
 
         <!--begin::Desc-->
