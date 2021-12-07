@@ -1,20 +1,25 @@
 <?php
 
-namespace App\Http\Livewire\Booking;
+namespace App\Http\Livewire\Front;
 
 use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\Service;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class BookingAdd extends Component
+class ServiceBooking extends Component
 {
     public $type, $email;
     public Customer $customer;
     public Booking $booking;
     public Service $service;
+
+    public function mount()
+    {
+        $this->customer = new Customer();
+        $this->booking = new Booking();
+    }
 
     protected function rules()
     {
@@ -28,36 +33,17 @@ class BookingAdd extends Component
         ];
     }
 
-    public function mount()
-    {
-        $this->type = 1;
-        $this->customer = new Customer();
-        $this->booking = new Booking();
-    }
-
     public function render()
     {
-        return view('livewire.booking.booking-add');
-    }
+        return view('livewire.front.service-booking')
+            ->layout('layouts.front.main');
 
-    public function search()
-    {
-        $this->customer = new Customer();
-        Validator::make(
-            ['email' => $this->email],
-            ['email' => 'required|email|exists:customers'],
-            ['required' => 'Please enter an E-mail', 'exists' => 'There is no customer with that E-mail'],
-        )->validate();
-
-        $this->customer = Customer::where('email', $this->email)->first();
     }
 
     public function save()
     {
         $this->validate();
-        if ($this->type == 1) {
-            $this->customer->save();
-        }
+        $this->customer->save();
         $this->booking->customer_id = $this->customer->id;
         $this->service->bookings()->save($this->booking);
         $this->customer = new Customer();
@@ -65,5 +51,4 @@ class BookingAdd extends Component
         $this->emit('message', 'success', "Booking scheduled successfully");
 
     }
-
 }

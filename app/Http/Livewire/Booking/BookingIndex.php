@@ -20,7 +20,6 @@ class BookingIndex extends Component
     public function render()
     {
         $bookings = $this->service->bookings()->with(['customer', 'service.sub_category'])->get();
-//        dd($bookings);
         $this->events = $bookings->map(function ($booking) {
             return [
                 'id' => $booking->id,
@@ -29,6 +28,7 @@ class BookingIndex extends Component
                 'date' => $booking->start_at->toDateTimeString(),
             ];
         });
+//        dd($this->events);
         return view('livewire.booking.booking-index');
     }
 

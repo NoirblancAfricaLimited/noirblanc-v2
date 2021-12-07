@@ -41,9 +41,10 @@
                 <ul class="menu">
                     <li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
                     <li class="menu-item"><a href="about.html">About</a></li>
-                    <li class="menu-item"><a href="service.html">Services</a></li>
-                    <li class="menu-item"><a href="gallery.html">Gallery</a></li>
+                    <li class="menu-item"><a href="{{route('service.browse')}}">Services</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
+                    <li class="menu-item"><a href="{{route('login')}}">Login</a></li>
+
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
 

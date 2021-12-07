@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 //Route::middleware(['guest'])->group(function () {
-    Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
 //});
 
 Route::middleware(['auth'])->group(function () {
@@ -45,7 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/category/create', \App\Http\Livewire\Category\CategoryAdd::class)->name('category.create');
 });
 
-Route::middleware(['guest'])->group(function () {
     Route::get('/join', \App\Http\Livewire\Business\BusinessJoin::class)->name('business.join');
-
-});
+    Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
+    Route::get('/service/browse', \App\Http\Livewire\Front\ServiceBrowse::class)->name('service.browse');
+    Route::get('/service/{service}/details', \App\Http\Livewire\Front\ServiceDetails::class)->name('service.details');
+    Route::get('/service/{service}/book', \App\Http\Livewire\Front\ServiceBooking::class)->name('service.book');
