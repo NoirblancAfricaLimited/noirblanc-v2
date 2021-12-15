@@ -16,4 +16,12 @@ class AdminTableItem extends Component
     public function delete(){
         $this->admin->delete();
     }
+
+    public function activate(){
+        $this->admin->restore();
+    }
+
+    public function deactivate(){
+        $this->admin->delete();
+    }
 }

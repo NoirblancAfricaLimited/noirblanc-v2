@@ -9,7 +9,7 @@ class AdminIndex extends Component
 {
     public function render()
     {
-        $admins = Admin::all();
+        $admins = Admin::withTrashed()->get();
 
         return view('livewire.admin.admin-index',compact('admins'));
     }

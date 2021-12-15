@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest:api')->group(function () {
 
     Route::prefix('customer')->group(function () {
-        Route::middleware('guest:api')->post('/login', [App\Http\Controllers\Customer\CustomerController::class, 'login']);
+        Route::middleware('guest:api')->post('/login', [App\Http\Controllers\Api\Customer\CustomerController::class, 'login']);
     });
-    Route::apiResource('customer', App\Http\Controllers\Customer\CustomerController::class);
+    Route::apiResource('customer', App\Http\Controllers\Api\Customer\CustomerController::class);
 
-    Route::apiResource('service', \App\Http\Controllers\Api\ServiceController::class);
+    Route::apiResource('service', \App\Http\Controllers\Api\Service\ServiceController::class);
 
 
 
