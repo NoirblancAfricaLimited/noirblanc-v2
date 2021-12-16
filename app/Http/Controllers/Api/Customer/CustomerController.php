@@ -43,7 +43,9 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customer = Customer::create($request->all());
-       return response()->json($customer);
+        $token = $customer->createToken($request->device_name)->plainTextToken;
+
+        return response()->json(compact('token'));
     }
 
     /**

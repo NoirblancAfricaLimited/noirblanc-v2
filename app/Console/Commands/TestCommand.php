@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Admin;
+use App\Models\Booking;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\Customer;
@@ -45,12 +46,13 @@ class TestCommand extends Command
     public function handle()
     {
 
-        foreach (Business::all() as $user) {
-//            $request->erm_id = User::where('positions_id', env('ERM_POSITION_ID'))->first()->id;
-//            $request->save();
-            if (!$user->avatar) {
-                $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
-            }
+        Booking::all()->each->setStatus('pending');
+//        foreach (Business::all() as $user) {
+////            $request->erm_id = User::where('positions_id', env('ERM_POSITION_ID'))->first()->id;
+////            $request->save();
+//            if (!$user->avatar) {
+//                $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
+//            }
 
 //            foreach (Customer::all() as $c) {
 //                $c->password = Hash::make('Welcome');
@@ -59,5 +61,5 @@ class TestCommand extends Command
 
 
         }
-    }
+
     }

@@ -7,7 +7,7 @@ use App\Models\Booking;
 use App\Models\Service;
 use Livewire\Component;
 
-class BookingIndex extends Component
+class BookingIndexOld extends Component
 {
 
     public Service $service;
@@ -20,7 +20,8 @@ class BookingIndex extends Component
     public function render()
     {
         $bookings = $this->service->bookings()->with(['customer', 'service.sub_category'])->get();
-        return view('livewire.booking.booking-index',compact('bookings'));
+//        dd($this->events);
+        return view('livewire.booking.booking-index-old',compact('bookings'));
     }
 
 }

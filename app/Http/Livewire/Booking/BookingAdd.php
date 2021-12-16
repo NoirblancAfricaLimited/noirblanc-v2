@@ -59,7 +59,9 @@ class BookingAdd extends Component
             $this->customer->save();
         }
         $this->booking->customer_id = $this->customer->id;
-        $this->service->bookings()->save($this->booking);
+        $booking = $this->service->bookings()->save($this->booking);
+        $booking->setStatus('pending');
+
         $this->customer = new Customer();
         $this->booking = new Booking();
         $this->emit('message', 'success', "Booking scheduled successfully");

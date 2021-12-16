@@ -1,91 +1,70 @@
-
 <div class="row">
     <div class="col-lg-12">
-        <button class="btn btn-primary font-weight-bolder font-size-sm mb-5" data-toggle="modal"
-                data-target="#booking-add">
-            Add
-        </button>
-    </div>
+        <div class="card card-custom ">
+            <!--begin::Header-->
+            <div class="card-header border-0 py-5">
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label font-weight-bolder text-dark">All Businesses</span>
+                    {{--                    <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span>--}}
+                </h3>
+                <div class="card-toolbar">
+                    <button class="btn btn-primary font-weight-bolder font-size-sm mb-5" data-toggle="modal"
+                            data-target="#booking-add">
+                        Add
+                    </button>
+                </div>
+            </div>
+            <!--end::Header-->
 
-    <div class="col-lg-12">
-        <div id="kt_calendar"></div>
+            <!--begin::Body-->
+            <div class="card-body py-0">
+
+            {{--                <x-message/>--}}
+
+            <!--begin::Table-->
+                <div class="table-responsive">
+                    <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+                        <thead>
+                        <tr class="text-left">
+                            <th>Customer Name</th>
+                            <th>Mobile</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Appointment Date</th>
+                            <th>Date Booked</th>
+                            <th class="pr-0 text-right">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($bookings as $booking)
+                            <livewire:booking.booking-index-item :booking="$booking" :key="$booking->id"/>
+                        @empty
+                            <tr>
+                                <td colspan="6">
+                                    <div class="alert alert-custom alert-outline-info fade show mb-5" role="alert">
+                                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                        <div class="alert-text">You currently have no Bookings</div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    @endforelse
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--end::Table-->
+            </div>
+            <!--end::Body-->
+        </div>
+    </div>
+    <div class="modal fade" id="booking-add" data-backdrop="static" tabindex="-1" role="dialog"
+         aria-labelledby="staticBackdrop" aria-hidden="true" xmlns:wire="http://www.w3.org/1999/xhtml">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <livewire:booking.booking-add :service="$service"/>
+        </div>
     </div>
 </div>
-
-<div class="modal fade" id="booking-add" data-backdrop="static" tabindex="-1" role="dialog"
-     aria-labelledby="staticBackdrop" aria-hidden="true" xmlns:wire="http://www.w3.org/1999/xhtml">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <livewire:booking.booking-add :service="$service"/>
-    </div>
-</div>
-
-
-@push('scripts')
-    <script type="text/javascript" wire:ignore>
-        var bookings;
-
-        jQuery(document).ready(function() {
-            var todayDate = moment().startOf('day');
-            var TODAY = todayDate.format('YYYY-MM-DD');
-
-            var calendarEl = document.getElementById('kt_calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                height: 650,
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
-
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-
-                // height: 800,
-                // contentHeight: 750,
-                // aspectRatio: 2,  // see: https://fullcalendar.io/docs/aspectRatio
-
-                views: {
-                    dayGridMonth: { buttonText: 'month' },
-                    timeGridWeek: { buttonText: 'week' },
-                    timeGridDay: { buttonText: 'day' },
-                    listDay: { buttonText: 'list' },
-                    listWeek: { buttonText: 'list' }
-                },
-
-                defaultView: 'listWeek',
-                defaultDate: TODAY,
-
-                editable: false,
-                eventLimit: true, // allow "more" link when too many events
-                navLinks: true,
-                events: @json($events),
-                eventClick: function(info) {
-                    alert('Event: ' + info.event.title);
-                    alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                    alert('View: ' + info.view.type);
-
-                    // change the border color just for fun
-                    info.el.style.borderColor = 'red';
-                },
-                eventRender: function(info) {
-                    var element = $(info.el);
-
-                    if (info.event.extendedProps && info.event.extendedProps.description) {
-                        if (element.hasClass('fc-day-grid-event')) {
-                            element.data('content', info.event.extendedProps.description);
-                            element.data('placement', 'top');
-                            KTApp.initPopover(element);
-                        } else if (element.hasClass('fc-time-grid-event')) {
-                            element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
-                        } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                            element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
-                        }
-                    }
-                }
-            });
-            calendar.render();
-        });
-
-
-
-    </script>
-@endpush
