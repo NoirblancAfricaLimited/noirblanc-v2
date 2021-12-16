@@ -11,7 +11,7 @@
  Target Server Version : 100504
  File Encoding         : 65001
 
- Date: 15/12/2021 18:49:08
+ Date: 16/12/2021 18:35:40
 */
 
 SET NAMES utf8mb4;
@@ -63,7 +63,7 @@ CREATE TABLE `bookings`  (
 -- Records of bookings
 -- ----------------------------
 INSERT INTO `bookings` VALUES (1, 1, 1, '2021-12-10 12:00:33', NULL, NULL, NULL, '2021-12-03 10:23:55', '2021-12-03 10:23:55');
-INSERT INTO `bookings` VALUES (2, 2, 2, '2021-12-10 19:40:00', NULL, NULL, NULL, '2021-12-06 16:39:55', '2021-12-06 16:39:55');
+INSERT INTO `bookings` VALUES (2, 2, 1, '2021-12-10 19:40:00', NULL, NULL, NULL, '2021-12-06 16:39:55', '2021-12-06 16:39:55');
 
 -- ----------------------------
 -- Table structure for businesses
@@ -215,12 +215,12 @@ CREATE TABLE `customers`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `customers_email_unique`(`email`) USING BTREE,
   UNIQUE INDEX `customers_mobile_unique`(`mobile`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES (3, 'Gilbert', 'Sibajene', NULL, '+260977634317', NULL, 'Welcome1', NULL, NULL, '2021-12-15 16:41:24', '2021-12-15 16:41:24');
+INSERT INTO `customers` VALUES (1, 'Gilbert', 'Sibajene', NULL, '0977634317', NULL, 'Welcome1', NULL, NULL, '2021-12-16 13:29:46', '2021-12-16 13:29:46');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -336,11 +336,15 @@ CREATE TABLE `personal_access_tokens`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of personal_access_tokens
 -- ----------------------------
+INSERT INTO `personal_access_tokens` VALUES (1, 'App\\Models\\Customer', 4, 'RSR1.201013.001', 'f6e00a866a5a02b57a9f6b014db15fd15d2a120200bdcd3121202ebe50c4d812', '[\"*\"]', NULL, '2021-12-16 13:23:25', '2021-12-16 13:23:25');
+INSERT INTO `personal_access_tokens` VALUES (2, 'App\\Models\\Customer', 5, 'RSR1.201013.001', 'a5f8aba8fc52f1e8ec7a38ae1a83204f9d3393e78c968c62aafb8f3884f172ff', '[\"*\"]', NULL, '2021-12-16 13:28:16', '2021-12-16 13:28:16');
+INSERT INTO `personal_access_tokens` VALUES (3, 'App\\Models\\Customer', 6, 'RSR1.201013.001', 'ae6e8df6af68b0c927e3578aa9c87da4e70a6001dea393ae9e0ff12cdb9631c6', '[\"*\"]', NULL, '2021-12-16 13:29:21', '2021-12-16 13:29:21');
+INSERT INTO `personal_access_tokens` VALUES (4, 'App\\Models\\Customer', 7, 'RSR1.201013.001', 'd72f6b7e97f59f9b8c39c9fa639038a374502e896fc1490cea0453d9677dd572', '[\"*\"]', NULL, '2021-12-16 13:29:46', '2021-12-16 13:29:46');
 
 -- ----------------------------
 -- Table structure for providers
@@ -532,7 +536,7 @@ CREATE TABLE `statuses`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `statuses_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of statuses
@@ -540,6 +544,10 @@ CREATE TABLE `statuses`  (
 INSERT INTO `statuses` VALUES (1, 'active', NULL, 'App\\Models\\Business', 1, '2021-12-03 07:45:01', '2021-12-03 07:45:01');
 INSERT INTO `statuses` VALUES (2, 'active', NULL, 'App\\Models\\Service', 1, '2021-12-03 08:02:44', '2021-12-03 08:02:44');
 INSERT INTO `statuses` VALUES (3, 'active', NULL, 'App\\Models\\Service', 2, '2021-12-03 16:22:10', '2021-12-03 16:22:10');
+INSERT INTO `statuses` VALUES (4, 'pendning', NULL, 'App\\Models\\Booking', 1, '2021-12-16 14:41:19', '2021-12-16 14:41:19');
+INSERT INTO `statuses` VALUES (5, 'pendning', NULL, 'App\\Models\\Booking', 2, '2021-12-16 14:41:19', '2021-12-16 14:41:19');
+INSERT INTO `statuses` VALUES (6, 'pending', NULL, 'App\\Models\\Booking', 1, '2021-12-16 14:41:40', '2021-12-16 14:41:40');
+INSERT INTO `statuses` VALUES (7, 'pending', NULL, 'App\\Models\\Booking', 2, '2021-12-16 14:41:40', '2021-12-16 14:41:40');
 
 -- ----------------------------
 -- Table structure for sub_categories
