@@ -30,5 +30,5 @@ Route::middleware('guest:api')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
 
 //    Route::get('/service/{service}/customer/{customer}/booking', [\App\Http\Controllers\Api\BookingController::class, 'customer']);
-//    Route::apiResource('service.booking', \App\Http\Controllers\Api\BookingController::class)->shallow();
+    Route::apiResource('service.booking', \App\Http\Controllers\Api\Customer\BookingController::class)->shallow();
 });

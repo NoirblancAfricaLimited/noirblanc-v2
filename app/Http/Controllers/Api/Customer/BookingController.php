@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BookingResource;
+use App\Http\Resources\GeneralResource;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,10 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $service_id)
     {
-        //
+        $bookings = $request->user()->bookings()->where('service_id',$service_id)->get();
+       return BookingResource::collection($bookings);
     }
 
     /**
@@ -24,9 +27,11 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($service_id, Request $request)
     {
-        //
+        $booking = $request->user()->bookings()->create($request->all());
+        $booking->setStatus('pending');
+        return response()->json($booking);
     }
 
     /**

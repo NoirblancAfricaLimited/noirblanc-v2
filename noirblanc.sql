@@ -11,7 +11,7 @@
  Target Server Version : 100504
  File Encoding         : 65001
 
- Date: 16/12/2021 18:35:40
+ Date: 17/12/2021 17:28:08
 */
 
 SET NAMES utf8mb4;
@@ -57,13 +57,12 @@ CREATE TABLE `bookings`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bookings
 -- ----------------------------
-INSERT INTO `bookings` VALUES (1, 1, 1, '2021-12-10 12:00:33', NULL, NULL, NULL, '2021-12-03 10:23:55', '2021-12-03 10:23:55');
-INSERT INTO `bookings` VALUES (2, 2, 1, '2021-12-10 19:40:00', NULL, NULL, NULL, '2021-12-06 16:39:55', '2021-12-06 16:39:55');
+INSERT INTO `bookings` VALUES (8, 1, 8, '2021-12-25 06:25:00', NULL, NULL, NULL, '2021-12-17 15:25:31', '2021-12-17 15:25:31');
 
 -- ----------------------------
 -- Table structure for businesses
@@ -213,14 +212,14 @@ CREATE TABLE `customers`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `customers_email_unique`(`email`) USING BTREE,
-  UNIQUE INDEX `customers_mobile_unique`(`mobile`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+  UNIQUE INDEX `customers_mobile_unique`(`mobile`) USING BTREE,
+  UNIQUE INDEX `customers_email_unique`(`email`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES (1, 'Gilbert', 'Sibajene', NULL, '0977634317', NULL, 'Welcome1', NULL, NULL, '2021-12-16 13:29:46', '2021-12-16 13:29:46');
+INSERT INTO `customers` VALUES (8, 'Gilbert', 'Sibajene', NULL, '0977634317', NULL, '$2y$10$ufaHBzYNQe72schhf.kZfexwU.mLxBMMg9nibMTl50BDb5sUK4SXy', NULL, NULL, '2021-12-17 11:35:17', '2021-12-17 11:35:17');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -336,15 +335,23 @@ CREATE TABLE `personal_access_tokens`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of personal_access_tokens
 -- ----------------------------
-INSERT INTO `personal_access_tokens` VALUES (1, 'App\\Models\\Customer', 4, 'RSR1.201013.001', 'f6e00a866a5a02b57a9f6b014db15fd15d2a120200bdcd3121202ebe50c4d812', '[\"*\"]', NULL, '2021-12-16 13:23:25', '2021-12-16 13:23:25');
-INSERT INTO `personal_access_tokens` VALUES (2, 'App\\Models\\Customer', 5, 'RSR1.201013.001', 'a5f8aba8fc52f1e8ec7a38ae1a83204f9d3393e78c968c62aafb8f3884f172ff', '[\"*\"]', NULL, '2021-12-16 13:28:16', '2021-12-16 13:28:16');
-INSERT INTO `personal_access_tokens` VALUES (3, 'App\\Models\\Customer', 6, 'RSR1.201013.001', 'ae6e8df6af68b0c927e3578aa9c87da4e70a6001dea393ae9e0ff12cdb9631c6', '[\"*\"]', NULL, '2021-12-16 13:29:21', '2021-12-16 13:29:21');
-INSERT INTO `personal_access_tokens` VALUES (4, 'App\\Models\\Customer', 7, 'RSR1.201013.001', 'd72f6b7e97f59f9b8c39c9fa639038a374502e896fc1490cea0453d9677dd572', '[\"*\"]', NULL, '2021-12-16 13:29:46', '2021-12-16 13:29:46');
+INSERT INTO `personal_access_tokens` VALUES (9, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '3945721378a762b526f637b335f18994114abc2a6fc2c0d9e440e51b4afbc021', '[\"*\"]', NULL, '2021-12-17 11:40:49', '2021-12-17 11:40:49');
+INSERT INTO `personal_access_tokens` VALUES (8, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', 'b1e90aaba9c3004e42bf7538b10e5dc1572433a3fb7c5c44174028baea38bcc0', '[\"*\"]', NULL, '2021-12-17 11:40:05', '2021-12-17 11:40:05');
+INSERT INTO `personal_access_tokens` VALUES (7, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '53c795bccaa83734b4ed222ca0078b156b35b99e01db30841e1453452dad9509', '[\"*\"]', NULL, '2021-12-17 11:36:24', '2021-12-17 11:36:24');
+INSERT INTO `personal_access_tokens` VALUES (6, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', 'a2dfb16faf66e560068b322e71c222defe9740cddc3e5921908479b0b69bfaab', '[\"*\"]', NULL, '2021-12-17 11:36:07', '2021-12-17 11:36:07');
+INSERT INTO `personal_access_tokens` VALUES (10, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', 'f2c89ac391d527d7b526e4799719ed421874acabdaadef2b2309af3e16fdfb08', '[\"*\"]', NULL, '2021-12-17 11:40:52', '2021-12-17 11:40:52');
+INSERT INTO `personal_access_tokens` VALUES (11, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '7cc093f7a34224614d5ad04670c5c351bd80639ea3dbe29f1a15456914baaf77', '[\"*\"]', NULL, '2021-12-17 11:40:58', '2021-12-17 11:40:58');
+INSERT INTO `personal_access_tokens` VALUES (12, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '902472e6896e949dfa2cb1a3cf9fdd43ad23bd1ada3f208a9d4ae246d031a451', '[\"*\"]', NULL, '2021-12-17 11:41:26', '2021-12-17 11:41:26');
+INSERT INTO `personal_access_tokens` VALUES (13, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '7e50f6370122bec2d7641c6ed9e8d07971576ed50e5ccf709af52b073bb18aea', '[\"*\"]', NULL, '2021-12-17 11:41:40', '2021-12-17 11:41:40');
+INSERT INTO `personal_access_tokens` VALUES (14, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '0979a29a4823161673749f71c31d509f34e4c9f61f0b1149c3a53504a3c01ef5', '[\"*\"]', NULL, '2021-12-17 11:41:56', '2021-12-17 11:41:56');
+INSERT INTO `personal_access_tokens` VALUES (15, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '6dc395842a19660cb8ba8736683f373b33707c3a2353c14f27dacbaab2c9949c', '[\"*\"]', '2021-12-17 14:11:41', '2021-12-17 13:41:50', '2021-12-17 14:11:41');
+INSERT INTO `personal_access_tokens` VALUES (16, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '5ae45be6e0c2d051f28176c526d1dc516f7e10523e4be7f92d03a6dfd6508681', '[\"*\"]', '2021-12-17 15:13:24', '2021-12-17 14:56:45', '2021-12-17 15:13:24');
+INSERT INTO `personal_access_tokens` VALUES (17, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '28cb0a7a3f245c9782ae5eef68745f523a39aee3378a5bf366e3a06caab87e3e', '[\"*\"]', '2021-12-17 15:25:31', '2021-12-17 15:21:29', '2021-12-17 15:25:31');
 
 -- ----------------------------
 -- Table structure for providers
@@ -536,7 +543,7 @@ CREATE TABLE `statuses`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `statuses_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of statuses
@@ -548,6 +555,10 @@ INSERT INTO `statuses` VALUES (4, 'pendning', NULL, 'App\\Models\\Booking', 1, '
 INSERT INTO `statuses` VALUES (5, 'pendning', NULL, 'App\\Models\\Booking', 2, '2021-12-16 14:41:19', '2021-12-16 14:41:19');
 INSERT INTO `statuses` VALUES (6, 'pending', NULL, 'App\\Models\\Booking', 1, '2021-12-16 14:41:40', '2021-12-16 14:41:40');
 INSERT INTO `statuses` VALUES (7, 'pending', NULL, 'App\\Models\\Booking', 2, '2021-12-16 14:41:40', '2021-12-16 14:41:40');
+INSERT INTO `statuses` VALUES (8, 'pending', NULL, 'App\\Models\\Booking', 5, '2021-12-17 14:10:25', '2021-12-17 14:10:25');
+INSERT INTO `statuses` VALUES (9, 'pending', NULL, 'App\\Models\\Booking', 6, '2021-12-17 14:11:41', '2021-12-17 14:11:41');
+INSERT INTO `statuses` VALUES (10, 'pending', NULL, 'App\\Models\\Booking', 7, '2021-12-17 14:56:58', '2021-12-17 14:56:58');
+INSERT INTO `statuses` VALUES (11, 'pending', NULL, 'App\\Models\\Booking', 8, '2021-12-17 15:25:31', '2021-12-17 15:25:31');
 
 -- ----------------------------
 -- Table structure for sub_categories
