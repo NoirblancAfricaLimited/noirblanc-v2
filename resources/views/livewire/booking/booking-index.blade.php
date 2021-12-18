@@ -19,9 +19,6 @@
             <!--begin::Body-->
             <div class="card-body py-0">
 
-            {{--                <x-message/>--}}
-
-            <!--begin::Table-->
                 <div class="table-responsive">
                     <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
                         <thead>
@@ -32,7 +29,7 @@
                             <th>Status</th>
                             <th>Appointment Date</th>
                             <th>Date Booked</th>
-                            <th class="pr-0 text-right">Action</th>
+                            <th class="pr-0 text-right"></th>
                         </tr>
                         </thead>
                         <tbody>

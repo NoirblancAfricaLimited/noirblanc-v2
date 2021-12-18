@@ -18,10 +18,10 @@ class AdminTableItem extends Component
     }
 
     public function activate(){
-        $this->admin->restore();
+        $this->admin->setStatus('active');
     }
 
     public function deactivate(){
-        $this->admin->delete();
+        $this->admin->setStatus('deactivated');
     }
 }

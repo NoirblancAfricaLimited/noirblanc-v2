@@ -13,7 +13,7 @@
 <div id="kt_header_mobile" class="header-mobile bg-white  header-mobile-fixed ">
     <!--begin::Logo-->
     <a href="/">
-        <img alt="Logo" src="{{asset('')}}media/logos/logo.jpg" class="max-h-30px"/>
+        <img alt="Logo" src="{{asset('')}}img/logo-black.jpeg" class="max-h-30px"/>
     </a>
     <!--end::Logo-->
 
@@ -58,35 +58,28 @@
                         <div class="d-none d-lg-flex align-items-center mr-3">
                             <!--begin::Logo-->
                             <a href="/" class="mr-20">
-                                <img alt="Logo" src="{{asset('')}}media/logos/logo.jpg" class="max-h-50px"/>
+                                <img alt="Logo" src="{{asset('')}}img/logo-black.jpeg" class="max-h-50px"/>
                             </a>
                             <!--end::Logo-->
 
                             <!--begin::Tab Navs(for desktop mode)-->
                             <ul class="header-tabs nav align-self-end font-size-lg " role="tablist">
 
+                                @auth("web")
+                                    <li class="nav-item mr-3 active">
+                                        <a href="#" class="nav-link py-4 px-6 active" data-toggle="tab"
+                                           data-target="#kt_header_inventory" role="tab">
+                                            Admins
+                                        </a>
+                                    </li>
 
-                                <!--begin::Item-->
-                                <li class="nav-item mr-3 active">
-                                    <a href="#" class="nav-link py-4 px-6 active" data-toggle="tab"
-                                       data-target="#kt_header_inventory" role="tab">
-                                        Admins
-                                    </a>
-                                </li>
-
-                                <li class="nav-item mr-3 active">
-                                    <a href="#" class="nav-link py-4 px-6 " data-toggle="tab"
-                                       data-target="#kt_header_dashboard" role="tab">
-                                        Dashboard
-                                    </a>
-                                </li>
-
-                                <li class="nav-item mr-3">
-                                    <a href="#" class="nav-link py-4 px-6" data-toggle="tab"
-                                       data-target="#kt_header_tab_providers" role="tab">
-                                        Providers
-                                    </a>
-                                </li>
+                                    <li class="nav-item mr-3">
+                                        <a href="#" class="nav-link py-4 px-6" data-toggle="tab"
+                                           data-target="#kt_header_tab_providers" role="tab">
+                                            Providers
+                                        </a>
+                                    </li>
+                                @endauth
 
 
                             </ul>
@@ -97,11 +90,11 @@
                         <!--begin::Topbar-->
                         <div class="topbar bg-primary">
 
-{{--                            <div class="topbar-item">--}}
-{{--                                <livewire:shopping-cart/>--}}
+                        {{--                            <div class="topbar-item">--}}
+                        {{--                                <livewire:shopping-cart/>--}}
 
-{{--                            </div>--}}
-                            <!--begin::User-->
+                        {{--                            </div>--}}
+                        <!--begin::User-->
                             <div class="topbar-item">
                                 <div
                                     class="btn btn-icon btn-hover-transparent-white w-lg-auto d-flex align-items-center btn-lg px-2"
@@ -176,21 +169,23 @@
                             <div class="tab-content">
 
                                 <!--begin::Tab Pane-->
-                                <div class="tab-pane p-5 p-lg-0 justify-content-between show active" id="kt_header_inventory">
+                                <div class="tab-pane p-5 p-lg-0 justify-content-between show active"
+                                     id="kt_header_inventory">
                                     <div id="kt_header_menu"
                                          class="header-menu header-menu-mobile  header-menu-layout-default ">
                                         <!--begin::Nav-->
                                         <ul class="menu-nav ">
+                                            @auth("web")
+                                                <li class="menu-item " aria-haspopup="true"><a
+                                                        href="{{route('admin.index')}}"
+                                                        class="menu-link "><span
+                                                            class="menu-text">View Users</span></a></li>
 
-                                            <li class="menu-item " aria-haspopup="true"><a
-                                                    href="{{route('admin.index')}}"
-                                                    class="menu-link "><span
-                                                        class="menu-text">View Users</span></a></li>
-
-                                            <li class="menu-item " aria-haspopup="true"><a
-                                                    href="{{route('category.index')}}"
-                                                    class="menu-link "><span
-                                                        class="menu-text">View Categories</span></a></li>
+                                                <li class="menu-item " aria-haspopup="true"><a
+                                                        href="{{route('category.index')}}"
+                                                        class="menu-link "><span
+                                                            class="menu-text">View Categories</span></a></li>
+                                            @endauth
 
                                         </ul>
                                         <!--end::Nav-->
@@ -310,7 +305,6 @@
     <!--end::Header-->
 
 
-
     <!--begin::Content-->
     <div class="offcanvas-content pr-5 mr-n5">
         <!--begin::Header-->
@@ -346,7 +340,11 @@
                         </span>
                     </a>
 
-                    <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+                    <form method="post" action="{{route('logout')}}">
+                        @csrf
+                        <button class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</button>
+
+                    </form>
                 </div>
             </div>
         </div>

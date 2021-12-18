@@ -59,7 +59,7 @@ class TestCommand extends Command
 //                $c->save();
 //            }
 
-
-        }
-
+        Admin::all()->each->setStatus('active');
     }
+
+}

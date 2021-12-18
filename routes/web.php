@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//Route::middleware(['guest'])->group(function () {
-//});
+Route::middleware(['guest:provider'])->group(function () {
+    Route::get('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'login'])->name('provider.login');
+    Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.login');
+});
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:provider'])->group(function () {
 //    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('home');
 
     Route::get('/admin', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.index');
@@ -49,3 +51,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/service/browse', \App\Http\Livewire\Front\ServiceBrowse::class)->name('service.browse');
     Route::get('/service/{service}/details', \App\Http\Livewire\Front\ServiceDetails::class)->name('service.details');
     Route::get('/service/{service}/book', \App\Http\Livewire\Front\ServiceBooking::class)->name('service.book');
+
+

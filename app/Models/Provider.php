@@ -60,4 +60,7 @@ class Provider extends Authenticatable implements HasMedia
     {
         return sprintf("%s%s", substr($this->firstname, 0, 1), substr($this->lastname, 0, 1));
     }
+    function business(){
+        return $this->belongsTo(Business::class);
+    }
 }

@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "7.4.*",
+        "ext-soap": "*",
         "akaunting/laravel-money": "^1.2",
+        "artisaninweb/laravel-soap": "0.3.0.10",
         "beyondcode/laravel-vouchers": "^2.0",
         "davejamesmiller/laravel-breadcrumbs": "5.x",
         "digikraaft/laravel-review-rating": "^2.0",
@@ -19,12 +21,14 @@
         "laravel/ui": "^3.2",
         "livewire/livewire": "^2.4",
         "propaganistas/laravel-phone": "^4.3",
+        "ricorocks-digital-agency/soap": "^1.5",
         "spatie/laravel-medialibrary": "^9.0.0",
         "spatie/laravel-model-status": "^1.10"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laminas/laminas-code": "3.1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
