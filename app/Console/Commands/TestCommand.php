@@ -47,19 +47,18 @@ class TestCommand extends Command
     {
 
         Booking::all()->each->setStatus('pending');
-//        foreach (Business::all() as $user) {
-////            $request->erm_id = User::where('positions_id', env('ERM_POSITION_ID'))->first()->id;
-////            $request->save();
-//            if (!$user->avatar) {
-//                $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
-//            }
+        foreach (Business::all() as $user) {
 
+            if (!$user->avatar) {
+                $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
+            }
+        }
 //            foreach (Customer::all() as $c) {
 //                $c->password = Hash::make('Welcome');
 //                $c->save();
 //            }
 
-        Admin::all()->each->setStatus('active');
+//        Admin::all()->each->setStatus('active');
     }
 
 }
