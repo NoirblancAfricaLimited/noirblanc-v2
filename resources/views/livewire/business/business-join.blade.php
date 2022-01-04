@@ -9,6 +9,20 @@
         </div>
     </div>
     @else
+
+        <div class="col-lg-12">
+            <div class="alert alert-primary">
+                <ul >
+                    <li>Welcome to the No.1 PREMIUM and EXCLUSIVE Network of Professional Artists & Stylists</li>
+                    <li>Receive bookings 24/5; 7/11 365 days all year round</li>
+                    <li>Take bookings from anywhere anytime online.</li>
+                    <li>Booking confirmation with payments guaranteed</li>
+                    <li>Cancellations penalties</li>
+                    <li>Take the hustle out of referring other artists /stylists to customers when you are unavailable.  Just point them to this link</li>
+                </ul>
+            </div>
+        </div>
+
     <div class="col-lg-12">
         <div class="card card-custom card-shadowless rounded-top-0">
             <!--begin::Body-->
@@ -201,17 +215,6 @@
         </div>
 
     </div>
-
-        <div class="alert alert-primary">
-            <ul >
-                <li>Welcome to the No.1 PREMIUM and EXCLUSIVE Network of Professional Artists & Stylists</li>
-                <li>Receive bookings 24/5; 7/11 365 days all year round</li>
-                <li>Take bookings from anywhere anytime online.</li>
-                <li>Booking confirmation with payments guaranteed</li>
-                <li>Cancellations penalties</li>
-                <li>Take the hustle out of referring other artists /stylists to customers when you are unavailable.  Just point them to this link</li>
-            </ul>
-        </div>
         @endif
 </div>
 
