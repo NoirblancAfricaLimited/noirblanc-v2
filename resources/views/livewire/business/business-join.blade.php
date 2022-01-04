@@ -1,5 +1,5 @@
 <div class="row">
-    @if(!$joined)
+    @if($joined)
     <div class="col-lg-12">
         <div class="alert alert-primary mb-5 p-5" role="alert">
             <h4 class="alert-heading">Thank you for Joining Noirblanc</h4>
