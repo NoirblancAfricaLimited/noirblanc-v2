@@ -20,6 +20,8 @@ class BusinessJoin extends Component
 
     public $avatar,$nrc,$certificates;
 
+    public $password_confirmation,$password;
+
 
     protected $rules = [
         'business.name' => 'required|string',
@@ -32,8 +34,8 @@ class BusinessJoin extends Component
         //Admin information
         'provider.firstname' => 'required|string',
         'provider.lastname' => 'required|string',
-        'provider.email' => 'required|email|unique:providers,email',
-        'provider.mobile' => 'required|phone:ZM|unique:providers,mobile',
+        'password' => 'required',
+        'password_confirmation' => 'required|same:password',
         'avatar' => 'required|image',
         'nrc' => 'required|image',
         'certificates' => 'sometimes|image',
@@ -56,12 +58,17 @@ class BusinessJoin extends Component
     public function save()
     {
         $this->validate();
-        $this->provider->password = Hash::make('Welcome1');
-
         $this->business->save();
         $this->business->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
         $this->business->setStatus('pending');
+
+        $this->provider->password = Hash::make($this->password);
+
+        $this->provider->email = $this->business->email;
+        $this->provider->mobile = $this->business->phone;
         $provider = $this->business->provider()->save($this->provider);
+
+
         $provider->addMediaFromUrl($this->avatar->temporaryUrl())->toMediaCollection('avatar');
         $provider->addMediaFromUrl($this->nrc->temporaryUrl())->toMediaCollection('nrc');
         $provider->addMediaFromUrl($this->certificates->temporaryUrl())->toMediaCollection('certificates');
