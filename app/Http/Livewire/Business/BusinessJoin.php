@@ -22,6 +22,7 @@ class BusinessJoin extends Component
 
     public $password_confirmation,$password;
 
+    public $joined = false;
 
     protected $rules = [
         'business.name' => 'required|string',
@@ -72,6 +73,6 @@ class BusinessJoin extends Component
         $provider->addMediaFromUrl($this->avatar->temporaryUrl())->toMediaCollection('avatar');
         $provider->addMediaFromUrl($this->nrc->temporaryUrl())->toMediaCollection('nrc');
         $provider->addMediaFromUrl($this->certificates->temporaryUrl())->toMediaCollection('certificates');
-        $this->redirect(route('business.join'));
+        $this->joined = true;
     }
 }
