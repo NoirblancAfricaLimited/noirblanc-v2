@@ -1,24 +1,20 @@
 <head>
     <meta charset="utf-8"/>
-    <title>{{env('APP_NAME')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-
     <meta name="title" content="{{env('APP_NAME')}}">
     <meta name="description" content="{{env('APP_DESC')}}">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{env('APP_URL')}}">
     <meta property="og:title" content="{{env('APP_NAME')}}">
     <meta property="og:description" content="{{env('APP_DESC')}}">
     <meta property="og:image" content="{{asset('img/logo-black.jpeg')}}">
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:title" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{{env('APP_DESC')}}">
     <meta property="twitter:image" content="{{asset('img/logo-black.jpeg')}}">
+
+    <title>{{env('APP_NAME')}}</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
     <link href="{{asset('')}}/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css"/>
