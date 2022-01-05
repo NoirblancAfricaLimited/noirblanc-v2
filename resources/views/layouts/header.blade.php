@@ -7,12 +7,12 @@
     <meta property="og:url" content="{{env('APP_URL')}}">
     <meta property="og:title" content="{{env('APP_NAME')}}">
     <meta property="og:description" content="{{env('APP_DESC')}}">
-    <meta property="og:image" content="{{asset('img/logo-black.jpeg')}}">
+    <meta property="twitter:image" content="{{asset('media/logos/logo-black.png')}}">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{env('APP_URL')}}">
     <meta property="twitter:title" content="{{env('APP_URL')}}">
     <meta property="twitter:description" content="{{env('APP_DESC')}}">
-    <meta property="twitter:image" content="{{asset('img/logo-black.jpeg')}}">
+    <meta property="twitter:image" content="{{asset('media/logos/logo-black.png')}}">
 
     <title>{{env('APP_NAME')}}</title>
 
