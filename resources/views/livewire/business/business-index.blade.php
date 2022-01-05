@@ -31,6 +31,7 @@
                             <th>Mobile</th>
                             <th>E-mail</th>
                             <th>Services</th>
+                            <th>Status</th>
                             <th>Date Added</th>
                             <th class="pr-0 text-right">Action</th>
                         </tr>

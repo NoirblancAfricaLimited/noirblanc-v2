@@ -23,4 +23,16 @@ class ServiceIndex extends Component
         $services = $this->business->services()->get();
         return view('livewire.service.service-index',compact('services'));
     }
+
+    public function verify(){
+        $this->business->setStatus('active');
+    }
+
+    public function activate(){
+        $this->business->setStatus('active');
+    }
+
+    public function deactivate(){
+        $this->business->setStatus('inactive');
+    }
 }

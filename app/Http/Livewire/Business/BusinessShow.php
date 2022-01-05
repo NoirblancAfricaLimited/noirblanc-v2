@@ -17,4 +17,16 @@ class BusinessShow extends Component
     {
         return view('livewire.business.business-show');
     }
+
+    public function verify(){
+        $this->business->setStatus('active');
+    }
+
+    public function activate(){
+        $this->business->setStatus('active');
+    }
+
+    public function deactivate(){
+        $this->business->setStatus('active');
+    }
 }

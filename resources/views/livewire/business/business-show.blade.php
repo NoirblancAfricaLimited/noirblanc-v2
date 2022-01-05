@@ -76,13 +76,17 @@
                     <div class="my-lg-0 my-1">
                         <a href="{{route('business.edit',$business)}}"
                            class="btn btn-sm btn-primary font-weight-bolder text-uppercase mr-3">Edit</a>
-{{--                        @if($business->status == 'active')--}}
-{{--                            <button class="btn btn-sm btn-danger font-weight-bolder text-uppercase mr-3">De-activate--}}
-{{--                            </button>--}}
-{{--                        @else--}}
-{{--                            <button class="btn btn-sm btn-success font-weight-bolder text-uppercase mr-3">Activate--}}
-{{--                            </button>--}}
-{{--                        @endif--}}
+                        @if($business->status == 'active')
+                            <button class="btn btn-sm btn-danger font-weight-bolder text-uppercase mr-3" wire:click="deactivate">De-activate
+                            </button>
+                        @elseif($business->status == 'pending')
+                            <button class="btn btn-sm btn-success font-weight-bolder text-uppercase mr-3" wire:click="verify">Verify
+                            </button>
+                        @elseif($business->status == 'inactive')
+                            <button class="btn btn-sm btn-success font-weight-bolder text-uppercase mr-3" wire:click="activate">
+                                Activate
+                            </button>
+                        @endif
                     </div>
                 </div>
                 <!--end: Title-->

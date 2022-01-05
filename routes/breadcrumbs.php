@@ -36,7 +36,6 @@ Breadcrumbs::for('business.create', function ($trail) {
 Breadcrumbs::for('business.show', function ($trail, \App\Models\Business $business) {
     $trail->parent('business.index');
     $trail->push($business->name,route('business.show',$business));
-    $trail->push('Details');
 });
 
 Breadcrumbs::for('business.service.index', function ($trail, \App\Models\Business $business) {
@@ -51,8 +50,7 @@ Breadcrumbs::for('business.service.show', function ($trail, \App\Models\Service 
 });
 
 Breadcrumbs::for('business.edit', function ($trail, \App\Models\Business $business) {
-    $trail->parent('business.index');
-    $trail->push($business->name);
+    $trail->parent('business.show',$business);
     $trail->push('Edit');
 });
 

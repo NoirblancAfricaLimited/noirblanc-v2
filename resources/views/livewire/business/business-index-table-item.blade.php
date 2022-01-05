@@ -6,13 +6,14 @@
     {{--                 style="background-image: url('{{$item->stock->product->photos->first()->getUrl()}}')"></div>--}}
     {{--        </div>--}}
     <!--end::Symbol-->
-            <span class="text-primary">{{$business->name}}</span>
+            <a href="{{route('business.service.index',$business)}}" class="text-hover-primary">{{$business->name}}</a>
     </td>
     <td class="pt-7">{{$business->city->name}}</td>
     <td class="pt-7">{{$business->category->name}}</td>
     <td class="pt-7">{{$business->phone}}</td>
     <td class="pt-7 ">{{$business->email}}</td>
     <td class="pt-7">{{$business->services_count}}</td>
+    <td class="pt-7">{{$business->status}}</td>
     <td class="pt-7">{{$business->created_at->toFormattedDateString()}}</td>
 
     <td class="pr-0 text-right">
