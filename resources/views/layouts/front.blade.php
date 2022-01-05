@@ -5,6 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
+    <meta name="title" content="{{env('APP_NAME')}}">
+    <meta name="description" content="{{env('APP_DESC')}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{env('APP_URL')}}">
+    <meta property="og:title" content="{{env('APP_NAME')}}">
+    <meta property="og:description" content="{{env('APP_DESC')}}">
+    <meta property="og:image" content="{{asset('img/logo-black.jpeg')}}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{env('APP_URL')}}">
+    <meta property="twitter:title" content="{{env('APP_URL')}}">
+    <meta property="twitter:description" content="{{env('APP_DESC')}}">
+    <meta property="twitter:image" content="{{asset('img/logo-black.jpeg')}}">
+
     <title>{{env('APP_NAME')}}</title>
     <!-- Loading third party fonts -->
     <link href="{{asset('front')}}/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
