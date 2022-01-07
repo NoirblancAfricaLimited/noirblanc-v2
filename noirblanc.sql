@@ -1,5 +1,5 @@
 /*
- Navicat Premium Data Transfer
+ Navicat MySQL Data Transfer
 
  Source Server         : localhost
  Source Server Type    : MySQL
@@ -11,7 +11,7 @@
  Target Server Version : 100504
  File Encoding         : 65001
 
- Date: 17/12/2021 17:28:08
+ Date: 07/01/2022 17:14:19
 */
 
 SET NAMES utf8mb4;
@@ -27,18 +27,18 @@ CREATE TABLE `admins`  (
   `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admins
 -- ----------------------------
-INSERT INTO `admins` VALUES (1, 'Gilbert', 'Sibajene99', 'gilbertsibajene7@gmail.com', '0977634317', NULL, '$2y$10$uc4jiolEIrQwu5diXJsmoeC2DdYI1mfysTcE7wIGRygmqS447j8JS', NULL, '2021-04-24 10:46:27', '2021-07-05 09:10:35');
+INSERT INTO `admins` VALUES (1, 'Gilbert', 'Sibajene', 'gilbertsibajene7@gmail.com', '0977634317', NULL, '$2y$10$uc4jiolEIrQwu5diXJsmoeC2DdYI1mfysTcE7wIGRygmqS447j8JS', NULL, '2021-04-24 10:46:27', '2021-12-18 12:54:20');
 INSERT INTO `admins` VALUES (2, 'Gilbert', 'Sibajene', 'gilbertsibajenee7@gmail.com', '+260977634316', NULL, '$2y$10$FcwOQ80GES8xIzZmFtVl0e5b48LMfH6lMssUj8NMQj65gLG1Od/U.', NULL, '2021-06-28 13:23:58', '2021-06-28 13:23:58');
 INSERT INTO `admins` VALUES (4, 'Jane', 'Mwana', 'iiziit@yahoo.com', '0973230300', NULL, '$2y$10$Nl8IhVN5W9VIODfR6HYioOVTd66BdqrO4rm/j.7.GO7wphS7qnqH6', NULL, '2021-07-05 08:59:53', '2021-07-05 08:59:53');
 
@@ -50,19 +50,19 @@ CREATE TABLE `bookings`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
   `customer_id` int NOT NULL,
-  `start_at` datetime(0) NOT NULL,
-  `ends_at` datetime(0) NULL DEFAULT NULL,
+  `start_at` datetime NOT NULL,
+  `ends_at` datetime NULL DEFAULT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bookings
 -- ----------------------------
-INSERT INTO `bookings` VALUES (8, 1, 8, '2021-12-25 06:25:00', NULL, NULL, NULL, '2021-12-17 15:25:31', '2021-12-17 15:25:31');
+INSERT INTO `bookings` VALUES (9, 1, 8, '2021-12-25 10:00:00', NULL, NULL, NULL, '2021-12-18 13:15:32', '2021-12-18 13:15:32');
 
 -- ----------------------------
 -- Table structure for businesses
@@ -76,17 +76,18 @@ CREATE TABLE `businesses`  (
   `latitude` double NULL DEFAULT NULL,
   `longitude` double NULL DEFAULT NULL,
   `category_id` int NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of businesses
 -- ----------------------------
 INSERT INTO `businesses` VALUES (1, 'SuperCutz', 'House No. 3558, woodlands Chalala', 1, NULL, NULL, 3, '2021-12-03 07:44:57', '2021-12-03 07:44:57', '+260977634317', 'gilbertsibajene7@gmail.com');
+INSERT INTO `businesses` VALUES (2, 'ZESCO', 'House No. 3558, woodlands Chalala', 1, NULL, NULL, 3, '2022-01-04 11:42:04', '2022-01-04 11:42:04', '+260977634311', 'gsibajene@zesco.co.zm');
 
 -- ----------------------------
 -- Table structure for categories
@@ -95,9 +96,9 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -142,8 +143,8 @@ CREATE TABLE `category`  (
   `Service_Name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `Category_Name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `Category_Description` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ModifiedDate` datetime(0) NULL DEFAULT NULL,
-  `CreatedDate` datetime(0) NULL DEFAULT NULL,
+  `ModifiedDate` datetime NULL DEFAULT NULL,
+  `CreatedDate` datetime NULL DEFAULT NULL,
   `Image_Path` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`Category_Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
@@ -184,8 +185,8 @@ INSERT INTO `category` VALUES (59, 32, 'Events', 'Wedding Website', 'Wedding Web
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
@@ -205,12 +206,12 @@ CREATE TABLE `customers`  (
   `lastname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `mobile` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `customers_mobile_unique`(`mobile`) USING BTREE,
   UNIQUE INDEX `customers_email_unique`(`email`) USING BTREE
@@ -232,7 +233,7 @@ CREATE TABLE `failed_jobs`  (
   `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0),
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -261,21 +262,28 @@ CREATE TABLE `media`  (
   `generated_conversions` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `responsive_images` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `order_column` int UNSIGNED NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `media_uuid_unique`(`uuid`) USING BTREE,
   INDEX `media_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of media
 -- ----------------------------
 INSERT INTO `media` VALUES (3, 'App\\Models\\Service', 1, 'bdbce0d9-1abd-4629-937f-a7d84a96759e', 'gallery', 'HJstOCWZNPdyn4aym70SwRSuyAmSIx-metaNDA0N2ZlYmMwM2JmZDRlNDJkNWEzN2MwMzQ0YTc1MWQuanBn-', 'HJstOCWZNPdyn4aym70SwRSuyAmSIx-metaNDA0N2ZlYmMwM2JmZDRlNDJkNWEzN2MwMzQ0YTc1MWQuanBn-.jpg', 'image/jpeg', 'public', 'public', 113062, '[]', '[]', '[]', '[]', 3, '2021-12-03 10:22:29', '2021-12-03 10:22:29');
-INSERT INTO `media` VALUES (2, 'App\\Models\\Business', 1, '18f7864a-6bda-4fea-a364-30018562a89e', 'avatar', 'rlh0NN0zySqEXhsppHqF2M82fHjePJ-metabG9nbzIucG5n-', 'rlh0NN0zySqEXhsppHqF2M82fHjePJ-metabG9nbzIucG5n-.png', 'image/png', 'public', 'public', 4231, '[]', '[]', '{\"thumb\":true}', '[]', 2, '2021-12-03 10:19:00', '2021-12-03 10:19:00');
+INSERT INTO `media` VALUES (8, 'App\\Models\\Service', 3, 'c8f12908-4207-4bd7-8f59-663e38473e97', 'gallery', 'AH14kBxOFFBwNy5N1Y9rSs2gf4IyLf-metaSU1HXzEyOTQuSlBH-', 'AH14kBxOFFBwNy5N1Y9rSs2gf4IyLf-metaSU1HXzEyOTQuSlBH-.jpg', 'image/jpeg', 'public', 'public', 163022, '[]', '[]', '[]', '[]', 8, '2021-12-18 13:33:22', '2021-12-18 13:33:22');
 INSERT INTO `media` VALUES (4, 'App\\Models\\Service', 1, 'b109c5e8-4596-4d73-a7d4-ecca905feda8', 'gallery', 'kNQCOjOb8rxzlNNHXHJ4TqMxwkc0iW-metaQmxhY2stTWVuLUhhaXJzdHlsZXMuanBn-', 'kNQCOjOb8rxzlNNHXHJ4TqMxwkc0iW-metaQmxhY2stTWVuLUhhaXJzdHlsZXMuanBn-.jpg', 'image/jpeg', 'public', 'public', 52933, '[]', '[]', '[]', '[]', 4, '2021-12-03 10:22:29', '2021-12-03 10:22:29');
 INSERT INTO `media` VALUES (5, 'App\\Models\\Service', 1, 'd1422fb5-5a20-4fce-9eef-98a01e291a6e', 'gallery', '38f4dsnpgZr0YpD2XUTMqcK57Is982-metaZG93bmxvYWQuanBn-', '38f4dsnpgZr0YpD2XUTMqcK57Is982-metaZG93bmxvYWQuanBn-.jpg', 'image/jpeg', 'public', 'public', 8314, '[]', '[]', '[]', '[]', 5, '2021-12-03 10:22:30', '2021-12-03 10:22:30');
 INSERT INTO `media` VALUES (6, 'App\\Models\\Service', 2, '9826e762-762c-4478-9716-362272a95d98', 'gallery', 'SmdSolpVfiPtL8mFDecahZeYHovPz9-metaMTktd29tZW5zLWZhZGUtd2l0aC1zaGF2ZWQtcGFydC5qcGc=-', 'SmdSolpVfiPtL8mFDecahZeYHovPz9-metaMTktd29tZW5zLWZhZGUtd2l0aC1zaGF2ZWQtcGFydC5qcGc=-.jpg', 'image/jpeg', 'public', 'public', 45370, '[]', '[]', '[]', '[]', 6, '2021-12-03 16:23:43', '2021-12-03 16:23:43');
+INSERT INTO `media` VALUES (7, 'App\\Models\\Business', 1, '0e73b892-bd53-48f1-b1e5-99e658a9f544', 'avatar', 'yUNHVqvHmC6WfmLlZc9LecUhpH0FVc-metabG9nbzUucG5n-', 'yUNHVqvHmC6WfmLlZc9LecUhpH0FVc-metabG9nbzUucG5n-.png', 'image/png', 'public', 'public', 3051, '[]', '[]', '{\"thumb\":true}', '[]', 7, '2021-12-18 12:08:49', '2021-12-18 12:08:50');
+INSERT INTO `media` VALUES (9, 'App\\Models\\Service', 3, 'ca3392c5-4317-4574-90f3-07062ff0d55c', 'gallery', 'F2OpgA2dtn33wItOGV94EN6G8dUmSf-metaSU1HXzEzMjMuSlBH-', 'F2OpgA2dtn33wItOGV94EN6G8dUmSf-metaSU1HXzEzMjMuSlBH-.jpg', 'image/jpeg', 'public', 'public', 120325, '[]', '[]', '[]', '[]', 9, '2021-12-18 13:33:22', '2021-12-18 13:33:22');
+INSERT INTO `media` VALUES (10, 'App\\Models\\Service', 3, '92c0ff11-461a-4d60-a65d-51a7e9745224', 'gallery', '7xLa2hWXByqQQOLb70vHJ9Pf4coc05-metaSU1HXzEzMjcuSlBH-', '7xLa2hWXByqQQOLb70vHJ9Pf4coc05-metaSU1HXzEzMjcuSlBH-.jpg', 'image/jpeg', 'public', 'public', 440727, '[]', '[]', '[]', '[]', 10, '2021-12-18 13:33:22', '2021-12-18 13:33:22');
+INSERT INTO `media` VALUES (12, 'App\\Models\\Provider', 2, 'b7452f20-8dcd-44d4-aa0a-b32a52359d93', 'avatar', '97Nq6H5c9GGbPdPOkrl8yxgvhHEvsz-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjM4LjQ2IEFNLnBuZw==-', '97Nq6H5c9GGbPdPOkrl8yxgvhHEvsz-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjM4LjQ2IEFNLnBuZw==-.png', 'image/png', 'public', 'public', 407517, '[]', '[]', '{\"thumb\":true}', '[]', 12, '2022-01-04 11:42:05', '2022-01-04 11:42:06');
+INSERT INTO `media` VALUES (13, 'App\\Models\\Provider', 2, '54b99c02-52e8-46f8-bde3-b365a8868738', 'nrc', '1PQbKmWiXLMkEfqcEqa6sEhLEfcmrA-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjM4LjQ2IEFNLnBuZw==-', '1PQbKmWiXLMkEfqcEqa6sEhLEfcmrA-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjM4LjQ2IEFNLnBuZw==-.png', 'image/png', 'public', 'public', 407517, '[]', '[]', '{\"thumb\":true}', '[]', 13, '2022-01-04 11:42:06', '2022-01-04 11:42:06');
+INSERT INTO `media` VALUES (14, 'App\\Models\\Provider', 2, '57cfe280-b0a4-4327-8c84-0251f6d02b6a', 'certificates', 'fZipv9SWlNtE5pfTJ8H1mI2PYjaXgs-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjQwLjQzIEFNLnBuZw==-', 'fZipv9SWlNtE5pfTJ8H1mI2PYjaXgs-metaU2NyZWVuc2hvdCAyMDIxLTEyLTIzIGF0IDEwLjQwLjQzIEFNLnBuZw==-.png', 'image/png', 'public', 'public', 543009, '[]', '[]', '{\"thumb\":true}', '[]', 14, '2022-01-04 11:42:06', '2022-01-04 11:42:07');
+INSERT INTO `media` VALUES (15, 'App\\Models\\Business', 2, 'c131ec17-42c4-4baf-9a66-20d6caf95a5d', 'avatar', 'mNH1aNPO2srFQmZ41WZ7pTmMw78FLT-metabG9nbzMucG5n-', 'mNH1aNPO2srFQmZ41WZ7pTmMw78FLT-metabG9nbzMucG5n-.png', 'image/png', 'public', 'public', 3405, '[]', '[]', '{\"thumb\":true}', '[]', 15, '2022-01-05 11:49:38', '2022-01-05 11:49:39');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -310,7 +318,7 @@ DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`(250)) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -329,13 +337,13 @@ CREATE TABLE `personal_access_tokens`  (
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `last_used_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of personal_access_tokens
@@ -352,6 +360,9 @@ INSERT INTO `personal_access_tokens` VALUES (14, 'App\\Models\\Customer', 8, 'sd
 INSERT INTO `personal_access_tokens` VALUES (15, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '6dc395842a19660cb8ba8736683f373b33707c3a2353c14f27dacbaab2c9949c', '[\"*\"]', '2021-12-17 14:11:41', '2021-12-17 13:41:50', '2021-12-17 14:11:41');
 INSERT INTO `personal_access_tokens` VALUES (16, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '5ae45be6e0c2d051f28176c526d1dc516f7e10523e4be7f92d03a6dfd6508681', '[\"*\"]', '2021-12-17 15:13:24', '2021-12-17 14:56:45', '2021-12-17 15:13:24');
 INSERT INTO `personal_access_tokens` VALUES (17, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '28cb0a7a3f245c9782ae5eef68745f523a39aee3378a5bf366e3a06caab87e3e', '[\"*\"]', '2021-12-17 15:25:31', '2021-12-17 15:21:29', '2021-12-17 15:25:31');
+INSERT INTO `personal_access_tokens` VALUES (18, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '44928f4283988f9ca3d82ba240d3c6655f7a2e36f974f2bb11ccb7f81da3d16a', '[\"*\"]', '2021-12-18 10:06:57', '2021-12-18 09:26:31', '2021-12-18 10:06:57');
+INSERT INTO `personal_access_tokens` VALUES (19, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', '9adee8da0a9b10bdac65b2097c8b17c349ad2769bc7627b2c3cb9b402b935901', '[\"*\"]', '2021-12-18 12:50:27', '2021-12-18 12:48:12', '2021-12-18 12:50:27');
+INSERT INTO `personal_access_tokens` VALUES (20, 'App\\Models\\Customer', 8, 'sdk_gphone_x86', 'c7ddf238ce32649f3e1a60f985ef0d1746c183b7ab673398e373ee57a0d5e38f', '[\"*\"]', '2021-12-20 06:52:35', '2021-12-18 13:14:17', '2021-12-20 06:52:35');
 
 -- ----------------------------
 -- Table structure for providers
@@ -364,21 +375,22 @@ CREATE TABLE `providers`  (
   `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
-  `phone_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `phone_verified_at` timestamp NULL DEFAULT NULL,
   `business_id` int NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE,
   UNIQUE INDEX `users_phone_unique`(`mobile`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of providers
 -- ----------------------------
-INSERT INTO `providers` VALUES (1, 'Gilbert', 'Sibajene', 'gilbertsibajene7@gmail.com', '+260977634317', '$2y$10$mI91mApDXxPi9lyhhzsxQ.pgwBi5NRNJuvFCpPxgXKxZARQ0MK2tG', NULL, NULL, 1, NULL, '2021-12-03 07:45:01', '2021-12-03 07:45:01');
+INSERT INTO `providers` VALUES (1, 'Gilbert', 'Sibajene', 'gilbertsibajene77@gmail.com', '+260977634317', '$2y$10$mI91mApDXxPi9lyhhzsxQ.pgwBi5NRNJuvFCpPxgXKxZARQ0MK2tG', NULL, NULL, 1, NULL, '2021-12-03 07:45:01', '2021-12-03 07:45:01');
+INSERT INTO `providers` VALUES (2, 'Gilbert', 'Sibajene', 'gsibajene@zesco.co.zm', '+260977634311', '$2y$10$0btV2eUCUmkkApUhOkOon.aEPFlWmHYiwtEIoXhTEb0kQH9fo7Jby', NULL, NULL, 2, NULL, '2022-01-04 11:42:05', '2022-01-04 11:42:05');
 
 -- ----------------------------
 -- Table structure for reviews
@@ -393,9 +405,9 @@ CREATE TABLE `reviews`  (
   `model_id` bigint UNSIGNED NOT NULL,
   `author_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `author_id` bigint UNSIGNED NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `reviews_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE,
   INDEX `reviews_author_type_author_id_index`(`author_type`, `author_id`) USING BTREE
@@ -515,19 +527,20 @@ CREATE TABLE `services`  (
   `sub_category_id` int NOT NULL,
   `business_id` int NOT NULL,
   `price` decimal(8, 2) NOT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  `open_at` time(0) NULL DEFAULT NULL,
-  `close_at` time(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `open_at` time NULL DEFAULT NULL,
+  `close_at` time NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of services
 -- ----------------------------
 INSERT INTO `services` VALUES (1, 'The \"fade\" hairstyle is a popular short haircut for men—it actually made Google\'s \"Year in Search\" trending data list for 2020—and it\'s sometimes also called \"military reg.\" It simply means that your hair tapers from the bottom to the top and it can be as close to the skin as you like', 69, 1, 300.00, NULL, '2021-12-03 08:02:44', '2021-12-03 08:02:44', NULL, NULL);
 INSERT INTO `services` VALUES (2, 'Come enjoy your favourite women\'s cut here', 70, 1, 250.00, NULL, '2021-12-03 16:22:10', '2021-12-03 16:22:10', NULL, NULL);
+INSERT INTO `services` VALUES (3, 'The blowdrying process. The process begins with a soothing hair wash and scalp massage, that will leave you feeling relaxed and ready to have your hair lifted', 71, 1, 50.00, NULL, '2021-12-18 13:32:32', '2021-12-18 13:32:32', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for statuses
@@ -539,11 +552,11 @@ CREATE TABLE `statuses`  (
   `reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `model_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint UNSIGNED NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `statuses_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of statuses
@@ -559,6 +572,34 @@ INSERT INTO `statuses` VALUES (8, 'pending', NULL, 'App\\Models\\Booking', 5, '2
 INSERT INTO `statuses` VALUES (9, 'pending', NULL, 'App\\Models\\Booking', 6, '2021-12-17 14:11:41', '2021-12-17 14:11:41');
 INSERT INTO `statuses` VALUES (10, 'pending', NULL, 'App\\Models\\Booking', 7, '2021-12-17 14:56:58', '2021-12-17 14:56:58');
 INSERT INTO `statuses` VALUES (11, 'pending', NULL, 'App\\Models\\Booking', 8, '2021-12-17 15:25:31', '2021-12-17 15:25:31');
+INSERT INTO `statuses` VALUES (12, 'confirmed', NULL, 'App\\Models\\Booking', 8, '2021-12-18 09:25:59', '2021-12-18 09:25:59');
+INSERT INTO `statuses` VALUES (13, 'pending', NULL, 'App\\Models\\Booking', 8, '2021-12-18 12:12:04', '2021-12-18 12:12:04');
+INSERT INTO `statuses` VALUES (14, 'active', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:12:04', '2021-12-18 12:12:04');
+INSERT INTO `statuses` VALUES (15, 'active', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:12:04', '2021-12-18 12:12:04');
+INSERT INTO `statuses` VALUES (16, 'active', NULL, 'App\\Models\\Admin', 4, '2021-12-18 12:12:04', '2021-12-18 12:12:04');
+INSERT INTO `statuses` VALUES (17, 'deactivated', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:13:48', '2021-12-18 12:13:48');
+INSERT INTO `statuses` VALUES (18, 'active', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:13:50', '2021-12-18 12:13:50');
+INSERT INTO `statuses` VALUES (19, 'active', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:13:51', '2021-12-18 12:13:51');
+INSERT INTO `statuses` VALUES (20, 'deactivated', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:13:57', '2021-12-18 12:13:57');
+INSERT INTO `statuses` VALUES (21, 'active', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:13:58', '2021-12-18 12:13:58');
+INSERT INTO `statuses` VALUES (22, 'deactivated', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:14:45', '2021-12-18 12:14:45');
+INSERT INTO `statuses` VALUES (23, 'active', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:15:16', '2021-12-18 12:15:16');
+INSERT INTO `statuses` VALUES (24, 'deactivated', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:15:37', '2021-12-18 12:15:37');
+INSERT INTO `statuses` VALUES (25, 'active', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:15:38', '2021-12-18 12:15:38');
+INSERT INTO `statuses` VALUES (26, 'deactivated', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:15:54', '2021-12-18 12:15:54');
+INSERT INTO `statuses` VALUES (27, 'active', NULL, 'App\\Models\\Admin', 1, '2021-12-18 12:15:57', '2021-12-18 12:15:57');
+INSERT INTO `statuses` VALUES (28, 'deactivated', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:15:59', '2021-12-18 12:15:59');
+INSERT INTO `statuses` VALUES (29, 'active', NULL, 'App\\Models\\Admin', 2, '2021-12-18 12:16:00', '2021-12-18 12:16:00');
+INSERT INTO `statuses` VALUES (30, 'deactivated', NULL, 'App\\Models\\Admin', 4, '2021-12-18 12:16:02', '2021-12-18 12:16:02');
+INSERT INTO `statuses` VALUES (31, 'active', NULL, 'App\\Models\\Admin', 4, '2021-12-18 12:16:03', '2021-12-18 12:16:03');
+INSERT INTO `statuses` VALUES (32, 'confirmed', NULL, 'App\\Models\\Booking', 8, '2021-12-18 12:48:43', '2021-12-18 12:48:43');
+INSERT INTO `statuses` VALUES (33, 'pending', NULL, 'App\\Models\\Booking', 9, '2021-12-18 13:15:32', '2021-12-18 13:15:32');
+INSERT INTO `statuses` VALUES (34, 'confirmed', NULL, 'App\\Models\\Booking', 9, '2021-12-18 13:20:17', '2021-12-18 13:20:17');
+INSERT INTO `statuses` VALUES (35, 'active', NULL, 'App\\Models\\Service', 3, '2021-12-18 13:32:32', '2021-12-18 13:32:32');
+INSERT INTO `statuses` VALUES (36, 'pending', NULL, 'App\\Models\\Business', 2, '2022-01-04 11:42:05', '2022-01-04 11:42:05');
+INSERT INTO `statuses` VALUES (37, 'active', NULL, 'App\\Models\\Business', 2, '2022-01-05 12:49:19', '2022-01-05 12:49:19');
+INSERT INTO `statuses` VALUES (38, 'active', NULL, 'App\\Models\\Business', 2, '2022-01-05 12:49:25', '2022-01-05 12:49:25');
+INSERT INTO `statuses` VALUES (39, 'active', NULL, 'App\\Models\\Business', 2, '2022-01-05 12:49:30', '2022-01-05 12:49:30');
 
 -- ----------------------------
 -- Table structure for sub_categories
@@ -629,8 +670,8 @@ CREATE TABLE `taxes`  (
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` decimal(8, 2) NOT NULL,
   `business_id` bigint NOT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -647,7 +688,7 @@ CREATE TABLE `user_voucher`  (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `customer_id` bigint UNSIGNED NOT NULL,
   `voucher_id` bigint UNSIGNED NOT NULL,
-  `redeemed_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0) ON UPDATE CURRENT_TIMESTAMP(0),
+  `redeemed_at` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_voucher_user_id_foreign`(`customer_id`) USING BTREE,
   INDEX `user_voucher_voucher_id_foreign`(`voucher_id`) USING BTREE
@@ -667,11 +708,11 @@ CREATE TABLE `users`  (
   `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp(0) NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
@@ -689,16 +730,17 @@ CREATE TABLE `vouchers`  (
   `model_type` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint UNSIGNED NOT NULL,
   `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `expires_at` timestamp(0) NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `vouchers_code_unique`(`code`) USING BTREE,
   INDEX `vouchers_model_type_model_id_index`(`model_type`, `model_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of vouchers
 -- ----------------------------
+INSERT INTO `vouchers` VALUES (1, 'NB-2F48-YQ4Y', 'App\\Models\\Service', 1, '{\"discount\":\"50\"}', '2021-12-25 00:00:00', '2021-12-18 13:22:47', '2021-12-18 13:22:47');
 
 SET FOREIGN_KEY_CHECKS = 1;
