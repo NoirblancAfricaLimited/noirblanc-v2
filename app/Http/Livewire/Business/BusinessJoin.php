@@ -38,8 +38,8 @@ class BusinessJoin extends Component
         'password' => 'required',
         'password_confirmation' => 'required|same:password',
         'avatar' => 'required|image',
-        'nrc' => 'required|image',
-        'certificates' => 'sometimes|image',
+        'nrc' => 'required',
+        'certificates' => 'sometimes',
     ];
 
     public function mount()
