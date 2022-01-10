@@ -28,7 +28,7 @@ class ProviderController extends Controller
 
         if (Auth::guard('provider')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('business.service.index',auth()->guard('provider')->user()->business);
+            return redirect()->route('provider.business.service.index',auth()->guard('provider')->user()->business);
         }
 
         return back()->withErrors([
