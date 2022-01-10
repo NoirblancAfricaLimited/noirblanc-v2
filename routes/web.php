@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/category/create', \App\Http\Livewire\Category\CategoryAdd::class)->name('category.create');
 });
 
-    Route::get('/join', \App\Http\Livewire\Business\BusinessJoin::class)->name('business.join');
+    Route::get('/join', \App\Http\Livewire\Business\BusinessJoinForm::class)->name('business.join');
     Route::get('/', \App\Http\Livewire\Front\Home::class)->name('home');
     Route::get('/service/browse', \App\Http\Livewire\Front\ServiceBrowse::class)->name('service.browse');
     Route::get('/service/{service}/details', \App\Http\Livewire\Front\ServiceDetails::class)->name('service.details');

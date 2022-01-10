@@ -53,7 +53,7 @@ class BusinessJoin extends Component
     {
         $categories = Category::all();
         $cities = City::all();
-        return view('livewire.business.business-join', compact('categories', 'cities'))->layout('layouts.fullpage');;;
+        return view('livewire.business.business-join', compact('categories', 'cities'));
     }
 
     public function save()

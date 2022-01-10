@@ -22,7 +22,7 @@
     <link href="{{asset('')}}plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css"
           rel="stylesheet" type="text/css"/>
-    <link href="{{asset('')}}css/wizard-4.css" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('')}}css/wizard-1.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css"/>
 
     <link href="{{asset('')}}plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
