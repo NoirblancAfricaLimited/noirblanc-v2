@@ -13,6 +13,7 @@ use Spatie\ModelStatus\HasStatuses;
 class Service extends Model implements HasMedia
 {
     use HasFactory, HasStatuses, HasReviewRating, InteractsWithMedia, HasVouchers;
+    protected static $defaultImage = '/images/default/event.png';
 
     protected $guarded = [];
 

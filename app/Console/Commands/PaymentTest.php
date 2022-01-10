@@ -39,18 +39,39 @@ class PaymentTest extends Command
     public function handle()
     {
 
+        $now = now()->format('YmdHiss');
+        var_dump($now);
+        $response = Http::withHeaders([
+            'Content-Type' => 'text/xml;Charset=utf-8',
+            'Connection' => 'Keep-Alive'
+        ])->withBody('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kon="http://konik.cgrate.com">
 
-//        $opts = array(
-//            'ssl' => array(
-//                'verify_peer' => false,
-//                'verify_peer_name' => false,
-//                'allow_self_signed' => true
-//            )
-//        );
-//        $functions = Soap::to('https://543.cgrate.co.zm/Konik/KonikWs?wsdl')->trace()->withOptions($opts)->functions();
-//
-//        dd($functions);
+   <soapenv:Header>
 
+         <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" soapenv:mustUnderstand="1">
 
+            <wsse:UsernameToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="1639046031044">
+
+               <wsse:Username>1639046031044</wsse:Username>
+
+               <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">rEEeVPe4</wsse:Password>
+
+            </wsse:UsernameToken>
+
+         </wsse:Security>
+
+ </soapenv:Header>
+
+   <soapenv:Body>
+   <ns2:processCustomerPayment xmlns:ns2="http://konik.cgrate.com">
+   <transactionAmount>5</transactionAmount>
+   <customerMobile>260955506951</customerMobile>
+   <paymentReference>'.$now.'</paymentReference>
+   </ns2:processCustomerPayment>
+   </soapenv:Body>
+
+</soapenv:Envelope>', 'text/xml;Charset=utf-8')->post('http://test.543.cgrate.co.zm:55555/Konik/KonikWs');
+
+        dd($response->body());
     }
 }

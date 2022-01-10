@@ -1,4 +1,4 @@
-@extends('livewire.business.business-show')
+@extends('livewire.provider.business.business-show')
 @section('business-content')
     <div class="card card-custom card-stretch gutter-b">
         <!--begin::Header-->
