@@ -22,9 +22,12 @@ Route::middleware(['guest:provider'])->group(function () {
     Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.login');
 });
 
-Route::middleware(['auth:provider'])->group(function () {
-    Route::get('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'login'])->name('provider.login');
-    Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.login');
+Route::prefix('provider')->name('provider.')->middleware(['auth:provider'])->group(function () {
+    //Businesses
+    Route::get('/business/{business}/edit', \App\Http\Livewire\Business\BusinessEdit::class)->name('business.edit');
+    Route::get('/business/show', \App\Http\Livewire\Provider\Business\BusinessShow::class)->name('business.show');
+    Route::get('/business/service', \App\Http\Livewire\Provider\Service\ServiceIndex::class)->name('business.service.index');
+    Route::get('/business/service/{service}/show', \App\Http\Livewire\Provider\Service\ServiceIndexShow::class)->name('business.service.show');
 });
 
 Route::middleware(['auth'])->group(function () {

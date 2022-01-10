@@ -7,7 +7,7 @@
             {{--            </div>--}}
 
             <div>
-                <a href="{{route('provider.business.service.show',$service)}}"
+                <a href="{{route('business.service.show',$service)}}"
                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$service->sub_category->name}}</a>
 {{--                <span class="text-muted font-weight-bold d-block">{{$service->category->name}}</span>--}}
             </div>

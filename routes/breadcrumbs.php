@@ -62,3 +62,19 @@ Breadcrumbs::for('category.create', function ($trail) {
     $trail->parent('category.index');
     $trail->push('Add', route('category.create'));
 });
+
+//Provider
+Breadcrumbs::for('provider.business.show', function ($trail) {
+    $trail->push(auth()->user()->business->name,route('business.show',auth()->user()->business));
+});
+
+Breadcrumbs::for('provider.business.service.show', function ($trail, \App\Models\Service $service) {
+    $trail->parent( 'provider.business.service.index', $service->business);
+    $trail->push($service->name);
+});
+
+Breadcrumbs::for('provider.business.service.index', function ($trail) {
+    $business = auth()->user()->business;
+    $trail->push($business->name,route('provider.business.service.index',$business));
+    $trail->push('Services');
+});
