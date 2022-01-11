@@ -61,3 +61,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/service/{service}/book', \App\Http\Livewire\Front\ServiceBooking::class)->name('service.book');
 
 
+
