@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'admin',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -118,7 +118,7 @@ return [
         ],
 
         'providers' => [
-            'provider' => 'customers',
+            'provider' => 'providers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

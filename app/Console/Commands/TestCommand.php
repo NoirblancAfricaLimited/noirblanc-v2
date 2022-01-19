@@ -46,19 +46,6 @@ class TestCommand extends Command
     public function handle()
     {
 
-        Booking::all()->each->setStatus('pending');
-        foreach (Business::all() as $user) {
-
-            if (!$user->avatar) {
-                $user->addMediaFromUrl(asset('media/users/blank.png'))->toMediaCollection('avatar');
-            }
-        }
-//            foreach (Customer::all() as $c) {
-//                $c->password = Hash::make('Welcome');
-//                $c->save();
-//            }
-
-//        Admin::all()->each->setStatus('active');
     }
 
 }
