@@ -20,8 +20,15 @@ class ServiceIndex extends Component
 
     public function render()
     {
-        $services = $this->business->services()->get();
-        return view('livewire.service.service-index',compact('services'));
+        $services = $this->business->services()
+            ->withSum('wallet','balance')
+            ->withCount(['bookings'])
+            ->get();
+
+        $total_sales = $services->sum('wallet_sum_balance');
+        $total_bookings = $services->sum('bookings_count');
+        return view('livewire.service.service-index',
+            compact('services','total_bookings','total_sales'));
     }
 
     public function verify(){

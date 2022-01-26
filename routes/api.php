@@ -31,4 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 //    Route::get('/service/{service}/customer/{customer}/booking', [\App\Http\Controllers\Api\BookingController::class, 'customer']);
     Route::apiResource('service.booking', \App\Http\Controllers\Api\Customer\BookingController::class)->shallow();
+    Route::post("/booking/{booking}/pay", [\App\Http\Controllers\Api\Customer\BookingController::class,'pay']);
 });

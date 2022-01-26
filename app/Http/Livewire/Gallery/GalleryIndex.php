@@ -27,6 +27,7 @@ class GalleryIndex extends Component
     public function save()
     {
         $this->validate([
+            'photos' => 'required',
             'photos.*' => 'image|max:1024', // 1MB Max
         ]);
 

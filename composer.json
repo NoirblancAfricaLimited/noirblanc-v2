@@ -9,7 +9,9 @@
         "ext-soap": "*",
         "akaunting/laravel-money": "^1.2",
         "artisaninweb/laravel-soap": "0.3.0.10",
+        "bavix/laravel-wallet": "^7.3",
         "beyondcode/laravel-vouchers": "^2.0",
+        "codedredd/laravel-soap": "*",
         "davejamesmiller/laravel-breadcrumbs": "5.x",
         "digikraaft/laravel-review-rating": "^2.0",
         "fideloper/proxy": "^4.4",
@@ -23,16 +25,18 @@
         "propaganistas/laravel-phone": "^4.3",
         "ricorocks-digital-agency/soap": "^1.5",
         "spatie/laravel-medialibrary": "^9.0.0",
-        "spatie/laravel-model-status": "^1.10"
+        "spatie/laravel-model-status": "^1.10",
+        "ext-http": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laminas/laminas-code": "3.1.0",
+        "laminas/laminas-code": "^4.5",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
     },
     "autoload": {
         "psr-4": {

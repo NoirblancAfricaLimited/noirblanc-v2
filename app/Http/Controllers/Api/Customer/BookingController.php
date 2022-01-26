@@ -5,8 +5,15 @@ namespace App\Http\Controllers\Api\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookingResource;
 use App\Http\Resources\GeneralResource;
+use App\Models\Booking;
 use App\Models\Service;
+use Bavix\Wallet\Internal\Exceptions\TransactionFailedException;
+use http\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use SoapClient;
+use SoapHeader;
+use SoapVar;
 
 class BookingController extends Controller
 {
@@ -17,14 +24,15 @@ class BookingController extends Controller
      */
     public function index(Request $request, $service_id)
     {
-        $bookings = $request->user()->bookings()->where('service_id',$service_id)->get();
-       return BookingResource::collection($bookings);
+        $bookings = $request->user()->bookings()->where('service_id', $service_id)->get();
+
+        return BookingResource::collection($bookings);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store($service_id, Request $request)
@@ -37,7 +45,7 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param \App\Models\Service $service
      * @return \Illuminate\Http\Response
      */
     public function show(Service $service)
@@ -45,11 +53,26 @@ class BookingController extends Controller
         //
     }
 
+    public function pay(Booking $booking, Request $request)
+    {
+        $service = $booking->service;
+        $customer = auth()->user();
+        $service->booking = $booking;
+        $amount = $service->getAmountProduct($customer);
+        $paid = $this->makePayment($request->mobile, $amount);
+        if($paid->responseCode == 0){
+            $customer->deposit($amount);
+            $result = $customer->pay($service);
+            $booking->setStatus('paid');
+            return response()->json('Payment success');
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Service $service
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Service $service)
@@ -60,11 +83,35 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param \App\Models\Service $service
      * @return \Illuminate\Http\Response
      */
     public function destroy(Service $service)
     {
         //
+    }
+
+
+    private function makePayment($mobile, $amount)
+    {
+        $content = Storage::path('wsdl.xml');
+        $auth = Storage::get('auth.xml');
+        $now = now()->format('YmdHiss');
+        $headerVar = new SoapVar($auth,
+            XSD_ANYXML);
+        $header = new SoapHeader('http://tempuri.org/', 'RequestParams',
+            $headerVar);
+        $client = new SoapClient($content);
+        $client->__setSoapHeaders($header);
+
+        $response = $client->__soapCall('processCustomerPayment', [
+            'parameters' => [
+                'transactionAmount' => $amount,
+                'customerMobile' => $mobile,
+                'paymentReference' => $now,
+            ]
+        ]);
+
+        return $response->return;
     }
 }

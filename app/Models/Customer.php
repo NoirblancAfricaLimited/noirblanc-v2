@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Bavix\Wallet\Traits\CanPay;
+use Bavix\Wallet\Traits\HasWallet;
 use BeyondCode\Vouchers\Traits\CanRedeemVouchers;
 use Digikraaft\ReviewRating\Traits\HasReviewRating;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Bavix\Wallet\Interfaces\Customer as CustomerInterface;
 
-class Customer extends  Authenticatable
+class Customer extends  Authenticatable implements  CustomerInterface
 {
-    use HasFactory,CanRedeemVouchers,Notifiable,HasApiTokens;
+    use HasFactory,CanRedeemVouchers,Notifiable,HasApiTokens,CanPay;
 
     protected $fillable = [
         'firstname',

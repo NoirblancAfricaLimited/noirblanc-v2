@@ -105,52 +105,42 @@
             <!--end: Info-->
         </div>
 
-    {{--        <div class="separator separator-solid my-7"></div>--}}
-
-    {{--        <!--begin: Items-->--}}
-    {{--        <div class="d-flex align-items-center flex-wrap">--}}
-    {{--            <!--begin: Item-->--}}
-    {{--            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">--}}
-    {{--                <span class="mr-4">--}}
-    {{--                    <i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>--}}
-    {{--                </span>--}}
-    {{--                <div class="d-flex flex-column text-dark-75">--}}
-    {{--                    <span class="font-weight-bolder font-size-sm">Earnings</span>--}}
-    {{--                    <span class="font-weight-bolder font-size-h5"><span--}}
-    {{--                            class="text-dark-50 font-weight-bold">$</span>249,500</span>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <!--end: Item-->--}}
-
-    {{--            <!--begin: Item-->--}}
-    {{--            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">--}}
-    {{--                <span class="mr-4">--}}
-    {{--                    <i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>--}}
-    {{--                </span>--}}
-    {{--                <div class="d-flex flex-column text-dark-75">--}}
-    {{--                    <span class="font-weight-bolder font-size-sm">Expenses</span>--}}
-    {{--                    <span class="font-weight-bolder font-size-h5"><span--}}
-    {{--                            class="text-dark-50 font-weight-bold">$</span>164,700</span>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <!--end: Item-->--}}
-
-    {{--            <!--begin: Item-->--}}
-    {{--            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">--}}
-    {{--                <span class="mr-4">--}}
-    {{--                    <i class="flaticon-pie-chart icon-2x text-muted font-weight-bold"></i>--}}
-    {{--                </span>--}}
-    {{--                <div class="d-flex flex-column text-dark-75">--}}
-    {{--                    <span class="font-weight-bolder font-size-sm">Net</span>--}}
-    {{--                    <span class="font-weight-bolder font-size-h5"><span--}}
-    {{--                            class="text-dark-50 font-weight-bold">$</span>782,300</span>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <!--end: Item-->--}}
-
-    {{--        </div>--}}
-    <!--begin: Items-->
-    </div>
+            <div class="separator separator-solid my-7"></div>
+        <div class="d-flex align-items-center flex-wrap">
+            <!--begin: Item-->
+            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+												<span class="mr-4">
+													<i class="flaticon-piggy-bank icon-2x text-muted font-weight-bold"></i>
+												</span>
+                <div class="d-flex flex-column text-dark-75">
+                    <span class="font-weight-bolder font-size-sm">Total Sales</span>
+                    <span class="font-weight-bolder font-size-h5">{{money($total_sales ?? 0)}}</span></div>
+            </div>
+            <!--end: Item-->
+            <!--begin: Item-->
+            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+												<span class="mr-4">
+													<i class="flaticon-confetti icon-2x text-muted font-weight-bold"></i>
+												</span>
+                <div class="d-flex flex-column text-dark-75">
+                    <span class="font-weight-bolder font-size-sm">Total Bookings</span>
+                    <span class="font-weight-bolder font-size-h5">{{money($total_bookings ?? 0)}}</span>
+                </div>
+            </div>
+            <!--end: Item-->
+            <!--begin: Item-->
+            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+												<span class="mr-4">
+													<i class="flaticon-pie-chart icon-2x text-muted font-weight-bold"></i>
+												</span>
+                <div class="d-flex flex-column text-dark-75">
+                    <span class="font-weight-bolder font-size-sm">Net</span>
+                    <span class="font-weight-bolder font-size-h5">
+													<span class="text-dark-50 font-weight-bold">$</span>782,300</span>
+                </div>
+            </div>
+        </div>
+        </div>
 </div>
 <!--end::Card-->
 
