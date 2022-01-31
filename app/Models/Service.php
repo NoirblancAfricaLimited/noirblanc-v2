@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Bavix\Wallet\Interfaces\Customer;
 use Bavix\Wallet\Interfaces\Product;
+use Bavix\Wallet\Interfaces\Taxable;
 use Bavix\Wallet\Traits\CanPay;
 use Bavix\Wallet\Traits\HasWallet;
 use BeyondCode\Vouchers\Traits\HasVouchers;
@@ -14,7 +15,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\ModelStatus\HasStatuses;
 
-class Service extends Model implements HasMedia, Product
+class Service extends Model implements HasMedia, Product,Taxable
 {
     use HasFactory, HasStatuses, HasReviewRating, InteractsWithMedia, HasVouchers, HasWallet;
 
@@ -59,7 +60,7 @@ class Service extends Model implements HasMedia, Product
 
     public function getAmountProduct(Customer $customer)
     {
-        return $this->booking->amount * $this->booking->quantity;
+        return $this->booking->amount;
     }
 
     public function getMetaProduct(): ?array
@@ -71,5 +72,10 @@ class Service extends Model implements HasMedia, Product
             'amount' => $this->booking->amount,
             'quantity' => $this->booking->quantity,
         ];
+    }
+
+    public function getFeePercent()
+    {
+        return 0.125;
     }
 }

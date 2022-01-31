@@ -14,7 +14,16 @@
     <td class="pt-7">{{$booking->start_at->toDayDateTimeString()}}</td>
     <td class="pt-7">{{$booking->created_at->toFormattedDateString()}}</td>
     <td class="pr-0 text-right">
-        <button type="button"  class="btn btn-sm btn-outline-primary"
-                wire:target="confirm" wire:click="confirm" wire:loading.class="spinner spinner-right spinner-white">Confirm</button>
+        @if($booking->status == 'pending')
+            <button type="button" class="btn btn-sm btn-outline-primary"
+                    wire:target="confirm" wire:click="confirm" wire:loading.class="spinner spinner-right spinner-white">
+                Confirm
+            </button>
+        @elseif($booking->status == 'paid')
+            <button type="button" class="btn btn-sm btn-outline-success"
+                    wire:target="complete" wire:click="complete" wire:loading.class="spinner spinner-right spinner-white">
+                Complete
+            </button>
+        @endif
     </td>
 </tr>

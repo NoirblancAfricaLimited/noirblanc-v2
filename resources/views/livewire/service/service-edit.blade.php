@@ -81,9 +81,9 @@
 
 {{--            </div>--}}
 
-{{--            <div class="col-lg-12">--}}
-{{--                <button type="button" class="btn btn-primary" wire:click="save" wire:loading.attr="disabled" wire:loading.class="spinner spinner-white spinner-right">Save</button>--}}
-{{--            </div>--}}
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" wire:click="save" wire:loading.attr="disabled" wire:loading.class="spinner spinner-white spinner-right">Save</button>
+            </div>
 
 {{--        </div>--}}
         </form>

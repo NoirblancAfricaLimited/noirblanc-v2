@@ -16,6 +16,8 @@ class Booking extends Model
 //        'end_at',
         'service_id',
         'customer_id',
+        'quantity',
+        'amount'
     ];
 
     protected $appends = [

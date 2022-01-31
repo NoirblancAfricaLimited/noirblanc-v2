@@ -20,4 +20,11 @@ class BookingIndexItem extends Component
         $this->emit('update');
         $this->emit('message','Booking confirmed successfully');
     }
+
+    public function complete()
+    {
+        $this->booking->setStatus('complete');
+        $this->emit('update');
+        $this->emit('message','Booking completed successfully');
+    }
 }

@@ -14,7 +14,7 @@ class ServiceEdit extends Component
     protected $rules = [
         'service.description' => 'required|string',
         'service.sub_category_id' => 'required|numeric',
-        'service.price' => 'required|string',
+        'service.price' => 'required|numeric',
 //        'service.open_at' => 'required',
 //        'service.close_at' => 'required',
     ];

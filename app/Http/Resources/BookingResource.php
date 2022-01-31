@@ -19,6 +19,9 @@ class BookingResource extends JsonResource
             'created_at' => $this->created_at,
             'description' => $this->description,
             'start_at' => $this->start_at,
+            'amount' => $this->amount,
+            'quantity' => $this->quantity,
+            'service' => new ServiceResource($this->service),
             'status' => $this->status
         ];
     }
