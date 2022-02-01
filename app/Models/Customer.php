@@ -24,6 +24,10 @@ class Customer extends  Authenticatable implements  CustomerInterface
         'mobile',
     ];
 
+    protected $appends = [
+        'avatar'
+    ];
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -44,5 +48,9 @@ class Customer extends  Authenticatable implements  CustomerInterface
 
     public function bookings(){
         return $this->hasMany(Booking::class);
+    }
+
+    public function getAvatarAttribute(){
+        return asset('media/users/default.jpg');
     }
 }

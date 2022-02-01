@@ -33,3 +33,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('service.booking', \App\Http\Controllers\Api\Customer\BookingController::class)->shallow();
     Route::post("/booking/{booking}/pay", [\App\Http\Controllers\Api\Customer\BookingController::class,'pay']);
 });
+Route::apiResource('service.review', \App\Http\Controllers\Api\Service\ReviewController::class)->shallow();

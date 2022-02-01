@@ -12,7 +12,6 @@ class ReviewIndex extends Component
     public function render()
     {
         $reviews = $this->service->reviews;
-//        dd($reviews);
         return view('livewire.review.review-index',compact('reviews'));
     }
 }

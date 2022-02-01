@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::middleware(['guest:provider'])->group(function () {
     Route::get('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'login'])->name('provider.login');
-    Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.login');
+    Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.authenticate');
 });
 
 Route::prefix('provider')->name('provider.')->middleware(['auth:provider'])->group(function () {

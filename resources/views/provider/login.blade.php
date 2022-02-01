@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Signin-->
                 <div class="login-form login-signin">
                     <!--begin::Form-->
-                    <form class="form" method="post"  action="{{route('provider.login')}}" novalidate="novalidate" id="kt_login_signin_form">
+                    <form class="form" method="post"  action="{{route('provider.authenticate')}}" novalidate="novalidate" id="kt_login_signin_form">
                     @csrf
                     <!--begin::Title-->
                         <div class="pb-13 pt-lg-0 pt-5">
