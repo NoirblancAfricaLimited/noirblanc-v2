@@ -17,7 +17,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Service::has('business')->get();
         return ServicesResource::collection($services);
     }
 

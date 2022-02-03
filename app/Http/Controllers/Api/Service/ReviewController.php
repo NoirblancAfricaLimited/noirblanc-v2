@@ -26,9 +26,12 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Service $service, Request $request)
     {
-        //
+        $service->review($request->name, $request->user(),0);
+        return response()->json($service);
+
+
     }
 
     /**
