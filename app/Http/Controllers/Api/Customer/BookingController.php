@@ -76,7 +76,7 @@ class BookingController extends Controller
                 return response()->json($paid->responseMessage,400);
             }
         }catch(Exception $e){
-            return response()->json($e->getMessage(),400);
+            return response()->json("Transaction Failed, please try again",400);
         }
 
     }
