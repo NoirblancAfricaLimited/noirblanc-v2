@@ -1,0 +1,1003 @@
+<definitions name='KonikWsService' targetNamespace='http://konik.cgrate.com' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://konik.cgrate.com' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://konik.cgrate.com' version='1.0' xmlns:tns='http://konik.cgrate.com' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='checkCashOutCodeStatus' type='tns:checkCashOutCodeStatus'/>
+   <xs:element name='checkCashOutCodeStatusResponse' type='tns:checkCashOutCodeStatusResponse'/>
+   <xs:element name='generateCashOutCode' type='tns:generateCashOutCode'/>
+   <xs:element name='generateCashOutCodeResponse' type='tns:generateCashOutCodeResponse'/>
+   <xs:element name='getAccountBalance' type='tns:getAccountBalance'/>
+   <xs:element name='getAccountBalanceResponse' type='tns:getAccountBalanceResponse'/>
+   <xs:element name='getAvailableCashDepositIssuers' type='tns:getAvailableCashDepositIssuers'/>
+   <xs:element name='getAvailableCashDepositIssuersResponse' type='tns:getAvailableCashDepositIssuersResponse'/>
+   <xs:element name='getBillCustomerName' type='tns:getBillCustomerName'/>
+   <xs:element name='getBillCustomerNameResponse' type='tns:getBillCustomerNameResponse'/>
+   <xs:element name='getBillPaymentBalanceDue' type='tns:getBillPaymentBalanceDue'/>
+   <xs:element name='getBillPaymentBalanceDueResponse' type='tns:getBillPaymentBalanceDueResponse'/>
+   <xs:element name='getDistributionChannels' type='tns:getDistributionChannels'/>
+   <xs:element name='getDistributionChannelsResponse' type='tns:getDistributionChannelsResponse'/>
+   <xs:element name='getLastVouchersPurchased' type='tns:getLastVouchersPurchased'/>
+   <xs:element name='getLastVouchersPurchasedResponse' type='tns:getLastVouchersPurchasedResponse'/>
+   <xs:element name='getPRNData' type='tns:getPRNData'/>
+   <xs:element name='getPRNDataResponse' type='tns:getPRNDataResponse'/>
+   <xs:element name='getVouchers' type='tns:getVouchers'/>
+   <xs:element name='getVouchersResponse' type='tns:getVouchersResponse'/>
+   <xs:element name='getVouchersWithUnits' type='tns:getVouchersWithUnits'/>
+   <xs:element name='getVouchersWithUnitsResponse' type='tns:getVouchersWithUnitsResponse'/>
+   <xs:element name='processBankToWallet' type='tns:processBankToWallet'/>
+   <xs:element name='processBankToWalletResponse' type='tns:processBankToWalletResponse'/>
+   <xs:element name='processCashDeposit' type='tns:processCashDeposit'/>
+   <xs:element name='processCashDepositResponse' type='tns:processCashDepositResponse'/>
+   <xs:element name='processCashOut' type='tns:processCashOut'/>
+   <xs:element name='processCashOutResponse' type='tns:processCashOutResponse'/>
+   <xs:element name='processCustomerPayment' type='tns:processCustomerPayment'/>
+   <xs:element name='processCustomerPaymentResponse' type='tns:processCustomerPaymentResponse'/>
+   <xs:element name='processZRAPayment' type='tns:processZRAPayment'/>
+   <xs:element name='processZRAPaymentResponse' type='tns:processZRAPaymentResponse'/>
+   <xs:element name='processZRARentPayment' type='tns:processZRARentPayment'/>
+   <xs:element name='processZRARentPaymentResponse' type='tns:processZRARentPaymentResponse'/>
+   <xs:element name='purchaseVoucher' type='tns:purchaseVoucher'/>
+   <xs:element name='purchaseVoucherResponse' type='tns:purchaseVoucherResponse'/>
+   <xs:element name='purchaseZescoVoucher' type='tns:purchaseZescoVoucher'/>
+   <xs:element name='purchaseZescoVoucherResponse' type='tns:purchaseZescoVoucherResponse'/>
+   <xs:element name='queryCustomerPayment' type='tns:queryCustomerPayment'/>
+   <xs:element name='queryCustomerPaymentResponse' type='tns:queryCustomerPaymentResponse'/>
+   <xs:element name='queryTransactionStatus' type='tns:queryTransactionStatus'/>
+   <xs:element name='queryTransactionStatusResponse' type='tns:queryTransactionStatusResponse'/>
+   <xs:element name='reconcile' type='tns:reconcile'/>
+   <xs:element name='reconcileResponse' type='tns:reconcileResponse'/>
+   <xs:element name='reverseCustomerPayment' type='tns:reverseCustomerPayment'/>
+   <xs:element name='reverseCustomerPaymentResponse' type='tns:reverseCustomerPaymentResponse'/>
+   <xs:element name='validateVoucherPurchase' type='tns:validateVoucherPurchase'/>
+   <xs:element name='validateVoucherPurchaseResponse' type='tns:validateVoucherPurchaseResponse'/>
+   <xs:complexType name='processCashOut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='cashOutCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+     <xs:element name='cashierID' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processCashOutResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='cResponse'>
+    <xs:sequence>
+     <xs:element name='responseCode' type='xs:int'/>
+     <xs:element minOccurs='0' name='responseMessage' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='reconcile'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='reconcileResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:reconResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='reconResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='reconDate' type='xs:dateTime'/>
+       <xs:element minOccurs='0' name='runningBalance' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='faceValuePurchased' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='merchantValuePurchased' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='reconId' type='xs:string'/>
+       <xs:element name='totalCount' type='xs:long'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='purchaseVoucher'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='Voucher' type='tns:voucherPurchaseRequestWs'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='voucherPurchaseRequestWs'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='distributionChannel' type='xs:string'/>
+     <xs:element name='isFixed' type='xs:boolean'/>
+     <xs:element name='receipient' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceProvider' type='xs:string'/>
+     <xs:element minOccurs='0' name='transactionReference' type='xs:string'/>
+     <xs:element minOccurs='0' name='voucherType' type='xs:string'/>
+     <xs:element name='voucherValue' type='xs:long'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='purchaseVoucherResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:purchaseResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='purchaseResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='purchaseId' type='xs:string'/>
+       <xs:element minOccurs='0' name='merchantVoucherValue' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='voucherPinNumber' type='xs:string'/>
+       <xs:element minOccurs='0' name='voucherSerialNumber' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='getAccountBalance'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getAccountBalanceResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:balanceResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='balanceResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='balance' type='xs:decimal'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='getDistributionChannels'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getDistributionChannelsResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:channelsResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='channelsResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='distributionChannels' nillable='true' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='queryTransactionStatus'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='transactionReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='queryTransactionStatusResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getBillCustomerName'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='serviceProvider' type='xs:string'/>
+     <xs:element minOccurs='0' name='billPaymentAccountNumber' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getBillCustomerNameResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:billCustomerNameResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='billCustomerNameResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='billCustomerName' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='purchaseZescoVoucher'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='Voucher' type='tns:voucherPurchaseRequestWs'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='purchaseZescoVoucherResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:purchaseZescoResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='purchaseZescoResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='purchaseId' type='xs:string'/>
+       <xs:element minOccurs='0' name='merchantVoucherValue' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='voucherPinNumber' type='xs:string'/>
+       <xs:element minOccurs='0' name='voucherSerialNumber' type='xs:string'/>
+       <xs:element minOccurs='0' name='zescoParameters' type='tns:zescoReceiptParameters'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='zescoReceiptParameters'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='customerAccountNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerAddress' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerName' type='xs:string'/>
+     <xs:element minOccurs='0' name='debtBalBfwd' type='xs:string'/>
+     <xs:element minOccurs='0' name='debtBalance' type='xs:string'/>
+     <xs:element minOccurs='0' name='debtBalanceAmount' type='xs:string'/>
+     <xs:element minOccurs='0' name='elecSerial' type='xs:string'/>
+     <xs:element minOccurs='0' name='exciseDuty' type='xs:string'/>
+     <xs:element minOccurs='0' name='fbekwh' type='xs:string'/>
+     <xs:element minOccurs='0' name='fbetoken' type='xs:string'/>
+     <xs:element minOccurs='0' name='fixedCharge' type='xs:string'/>
+     <xs:element minOccurs='0' name='receiptNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='refund' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='tariff' type='xs:string'/>
+     <xs:element minOccurs='0' name='tariffIndex' type='xs:string'/>
+     <xs:element minOccurs='0' name='totalVAT' type='xs:string'/>
+     <xs:element minOccurs='0' name='tvLicence' type='xs:string'/>
+     <xs:element minOccurs='0' name='units' type='xs:string'/>
+     <xs:element minOccurs='0' name='kWhAmount' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getVouchersWithUnits'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getVouchersWithUnitsResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:extendedVouchersResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='extendedVouchersResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='voucherDetails' nillable='true' type='tns:extendedVoucherDetail'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='extendedVoucherDetail'>
+    <xs:complexContent>
+     <xs:extension base='tns:voucherDetail'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='voucherUnits' type='xs:long'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='voucherDetail'>
+    <xs:complexContent>
+     <xs:extension base='tns:voucherPK'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='voucherId' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='voucherPK'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='serviceProvider' type='xs:string'/>
+     <xs:element minOccurs='0' name='voucherType' type='xs:string'/>
+     <xs:element minOccurs='0' name='voucherValue' type='xs:decimal'/>
+     <xs:element name='isFixed' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='validateVoucherPurchase'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='Voucher' type='tns:voucherPurchaseRequestWs'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='validateVoucherPurchaseResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:validatePurchaseResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='validatePurchaseResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence/>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='getLastVouchersPurchased'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='serviceProvider' type='xs:string'/>
+     <xs:element minOccurs='0' name='billPaymentAccountNumber' type='xs:string'/>
+     <xs:element name='countOfVouchers' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getLastVouchersPurchasedResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:lastVouchersResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='lastVouchersResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='wsVouchers' nillable='true' type='tns:wsVoucher'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='wsVoucher'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='purchaseId' type='xs:string'/>
+     <xs:element minOccurs='0' name='voucherPinNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='voucherSerialNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='purchaseDate' type='xs:dateTime'/>
+     <xs:element name='voucherAmount' type='xs:double'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='checkCashOutCodeStatus'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='cashOutCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='checkCashOutCodeStatusResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cashOutCodeStatus'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='cashOutCodeStatus'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='cashOutAmount' type='xs:decimal'/>
+       <xs:element minOccurs='0' name='cashOutBank' type='xs:string'/>
+       <xs:element minOccurs='0' name='requestorName' type='xs:string'/>
+       <xs:element minOccurs='0' name='requestorSurname' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='processCustomerPayment'>
+    <xs:sequence>
+     <xs:element name='transactionAmount' type='xs:double'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+     <xs:element minOccurs='0' name='paymentReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processCustomerPaymentResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:customerPaymentResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='customerPaymentResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='paymentID' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='queryCustomerPayment'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='paymentReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='queryCustomerPaymentResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:customerPaymentResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='reverseCustomerPayment'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='paymentReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='reverseCustomerPaymentResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processCashDeposit'>
+    <xs:sequence>
+     <xs:element name='transactionAmount' type='xs:double'/>
+     <xs:element minOccurs='0' name='customerAccount' type='xs:string'/>
+     <xs:element minOccurs='0' name='issuerName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processCashDepositResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cashDepositResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='cashDepositResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='internalReferenceNumber' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='processBankToWallet'>
+    <xs:sequence>
+     <xs:element name='transactionAmount' type='xs:double'/>
+     <xs:element minOccurs='0' name='customerAccount' type='xs:string'/>
+     <xs:element minOccurs='0' name='issuerName' type='xs:string'/>
+     <xs:element minOccurs='0' name='bankToWalletReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processBankToWalletResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:cashDepositResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processZRAPayment'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='prn' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+     <xs:element minOccurs='0' name='paymentReference' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processZRAPaymentResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:customerPaymentResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processZRARentPayment'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='prn' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+     <xs:element minOccurs='0' name='paymentReference' type='xs:string'/>
+     <xs:element minOccurs='0' name='landLordIssuerID' type='xs:string'/>
+     <xs:element minOccurs='0' name='landLordAccount' type='xs:string'/>
+     <xs:element name='rentAmount' type='xs:double'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='processZRARentPaymentResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:customerPaymentResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAvailableCashDepositIssuers'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getAvailableCashDepositIssuersResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPRNData'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='prn' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPRNDataResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:prnDataResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='prnDataResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='taxPayName' type='xs:string'/>
+       <xs:element minOccurs='0' name='taxPayerTPIN' type='xs:string'/>
+       <xs:element minOccurs='0' name='prn' type='xs:string'/>
+       <xs:element minOccurs='0' name='paymentDate' type='xs:dateTime'/>
+       <xs:element minOccurs='0' name='prnDate' type='xs:dateTime'/>
+       <xs:element name='prnAmount' type='xs:double'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='getBillPaymentBalanceDue'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='serviceProvider' type='xs:string'/>
+     <xs:element minOccurs='0' name='billPaymentAccountNumber' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getBillPaymentBalanceDueResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:balanceResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getVouchers'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getVouchersResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:vouchersResponse'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='vouchersResponse'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element maxOccurs='unbounded' minOccurs='0' name='voucherDetails' nillable='true' type='tns:voucherDetail'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name='generateCashOutCode'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='customerName' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerSurname' type='xs:string'/>
+     <xs:element minOccurs='0' name='cashOutAmount' type='xs:decimal'/>
+     <xs:element minOccurs='0' name='transactionReference' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerMobile' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerAccountID' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='generateCashOutCodeResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:lokaiCashOutCode'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='lokaiCashOutCode'>
+    <xs:complexContent>
+     <xs:extension base='tns:cResponse'>
+      <xs:sequence>
+       <xs:element minOccurs='0' name='cashOutCode' type='xs:string'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='KonikWs_getVouchersResponse'>
+  <part element='tns:getVouchersResponse' name='getVouchersResponse'></part>
+ </message>
+ <message name='KonikWs_getAvailableCashDepositIssuersResponse'>
+  <part element='tns:getAvailableCashDepositIssuersResponse' name='getAvailableCashDepositIssuersResponse'></part>
+ </message>
+ <message name='KonikWs_getPRNDataResponse'>
+  <part element='tns:getPRNDataResponse' name='getPRNDataResponse'></part>
+ </message>
+ <message name='KonikWs_getVouchers'>
+  <part element='tns:getVouchers' name='getVouchers'></part>
+ </message>
+ <message name='KonikWs_checkCashOutCodeStatus'>
+  <part element='tns:checkCashOutCodeStatus' name='checkCashOutCodeStatus'></part>
+ </message>
+ <message name='KonikWs_processCustomerPayment'>
+  <part element='tns:processCustomerPayment' name='processCustomerPayment'></part>
+ </message>
+ <message name='KonikWs_processCashOut'>
+  <part element='tns:processCashOut' name='processCashOut'></part>
+ </message>
+ <message name='KonikWs_reverseCustomerPaymentResponse'>
+  <part element='tns:reverseCustomerPaymentResponse' name='reverseCustomerPaymentResponse'></part>
+ </message>
+ <message name='KonikWs_purchaseZescoVoucher'>
+  <part element='tns:purchaseZescoVoucher' name='purchaseZescoVoucher'></part>
+ </message>
+ <message name='KonikWs_queryTransactionStatusResponse'>
+  <part element='tns:queryTransactionStatusResponse' name='queryTransactionStatusResponse'></part>
+ </message>
+ <message name='KonikWs_getBillCustomerNameResponse'>
+  <part element='tns:getBillCustomerNameResponse' name='getBillCustomerNameResponse'></part>
+ </message>
+ <message name='KonikWs_reconcileResponse'>
+  <part element='tns:reconcileResponse' name='reconcileResponse'></part>
+ </message>
+ <message name='KonikWs_processZRARentPaymentResponse'>
+  <part element='tns:processZRARentPaymentResponse' name='processZRARentPaymentResponse'></part>
+ </message>
+ <message name='KonikWs_getAvailableCashDepositIssuers'>
+  <part element='tns:getAvailableCashDepositIssuers' name='getAvailableCashDepositIssuers'></part>
+ </message>
+ <message name='KonikWs_processCashDepositResponse'>
+  <part element='tns:processCashDepositResponse' name='processCashDepositResponse'></part>
+ </message>
+ <message name='KonikWs_processBankToWallet'>
+  <part element='tns:processBankToWallet' name='processBankToWallet'></part>
+ </message>
+ <message name='KonikWs_getVouchersWithUnits'>
+  <part element='tns:getVouchersWithUnits' name='getVouchersWithUnits'></part>
+ </message>
+ <message name='KonikWs_processZRAPayment'>
+  <part element='tns:processZRAPayment' name='processZRAPayment'></part>
+ </message>
+ <message name='KonikWs_checkCashOutCodeStatusResponse'>
+  <part element='tns:checkCashOutCodeStatusResponse' name='checkCashOutCodeStatusResponse'></part>
+ </message>
+ <message name='KonikWs_processZRAPaymentResponse'>
+  <part element='tns:processZRAPaymentResponse' name='processZRAPaymentResponse'></part>
+ </message>
+ <message name='KonikWs_queryCustomerPaymentResponse'>
+  <part element='tns:queryCustomerPaymentResponse' name='queryCustomerPaymentResponse'></part>
+ </message>
+ <message name='KonikWs_processCashOutResponse'>
+  <part element='tns:processCashOutResponse' name='processCashOutResponse'></part>
+ </message>
+ <message name='KonikWs_purchaseVoucher'>
+  <part element='tns:purchaseVoucher' name='purchaseVoucher'></part>
+ </message>
+ <message name='KonikWs_processCustomerPaymentResponse'>
+  <part element='tns:processCustomerPaymentResponse' name='processCustomerPaymentResponse'></part>
+ </message>
+ <message name='KonikWs_queryTransactionStatus'>
+  <part element='tns:queryTransactionStatus' name='queryTransactionStatus'></part>
+ </message>
+ <message name='KonikWs_reverseCustomerPayment'>
+  <part element='tns:reverseCustomerPayment' name='reverseCustomerPayment'></part>
+ </message>
+ <message name='KonikWs_validateVoucherPurchaseResponse'>
+  <part element='tns:validateVoucherPurchaseResponse' name='validateVoucherPurchaseResponse'></part>
+ </message>
+ <message name='KonikWs_getPRNData'>
+  <part element='tns:getPRNData' name='getPRNData'></part>
+ </message>
+ <message name='KonikWs_getLastVouchersPurchased'>
+  <part element='tns:getLastVouchersPurchased' name='getLastVouchersPurchased'></part>
+ </message>
+ <message name='KonikWs_generateCashOutCodeResponse'>
+  <part element='tns:generateCashOutCodeResponse' name='generateCashOutCodeResponse'></part>
+ </message>
+ <message name='KonikWs_processCashDeposit'>
+  <part element='tns:processCashDeposit' name='processCashDeposit'></part>
+ </message>
+ <message name='KonikWs_getBillPaymentBalanceDueResponse'>
+  <part element='tns:getBillPaymentBalanceDueResponse' name='getBillPaymentBalanceDueResponse'></part>
+ </message>
+ <message name='KonikWs_queryCustomerPayment'>
+  <part element='tns:queryCustomerPayment' name='queryCustomerPayment'></part>
+ </message>
+ <message name='KonikWs_getLastVouchersPurchasedResponse'>
+  <part element='tns:getLastVouchersPurchasedResponse' name='getLastVouchersPurchasedResponse'></part>
+ </message>
+ <message name='KonikWs_generateCashOutCode'>
+  <part element='tns:generateCashOutCode' name='generateCashOutCode'></part>
+ </message>
+ <message name='KonikWs_purchaseZescoVoucherResponse'>
+  <part element='tns:purchaseZescoVoucherResponse' name='purchaseZescoVoucherResponse'></part>
+ </message>
+ <message name='KonikWs_reconcile'>
+  <part element='tns:reconcile' name='reconcile'></part>
+ </message>
+ <message name='KonikWs_purchaseVoucherResponse'>
+  <part element='tns:purchaseVoucherResponse' name='purchaseVoucherResponse'></part>
+ </message>
+ <message name='KonikWs_getAccountBalanceResponse'>
+  <part element='tns:getAccountBalanceResponse' name='getAccountBalanceResponse'></part>
+ </message>
+ <message name='KonikWs_getAccountBalance'>
+  <part element='tns:getAccountBalance' name='getAccountBalance'></part>
+ </message>
+ <message name='KonikWs_getDistributionChannelsResponse'>
+  <part element='tns:getDistributionChannelsResponse' name='getDistributionChannelsResponse'></part>
+ </message>
+ <message name='KonikWs_processZRARentPayment'>
+  <part element='tns:processZRARentPayment' name='processZRARentPayment'></part>
+ </message>
+ <message name='KonikWs_getVouchersWithUnitsResponse'>
+  <part element='tns:getVouchersWithUnitsResponse' name='getVouchersWithUnitsResponse'></part>
+ </message>
+ <message name='KonikWs_validateVoucherPurchase'>
+  <part element='tns:validateVoucherPurchase' name='validateVoucherPurchase'></part>
+ </message>
+ <message name='KonikWs_getBillPaymentBalanceDue'>
+  <part element='tns:getBillPaymentBalanceDue' name='getBillPaymentBalanceDue'></part>
+ </message>
+ <message name='KonikWs_processBankToWalletResponse'>
+  <part element='tns:processBankToWalletResponse' name='processBankToWalletResponse'></part>
+ </message>
+ <message name='KonikWs_getBillCustomerName'>
+  <part element='tns:getBillCustomerName' name='getBillCustomerName'></part>
+ </message>
+ <message name='KonikWs_getDistributionChannels'>
+  <part element='tns:getDistributionChannels' name='getDistributionChannels'></part>
+ </message>
+ <portType name='KonikWs'>
+  <operation name='checkCashOutCodeStatus' parameterOrder='checkCashOutCodeStatus'>
+   <input message='tns:KonikWs_checkCashOutCodeStatus'></input>
+   <output message='tns:KonikWs_checkCashOutCodeStatusResponse'></output>
+  </operation>
+  <operation name='generateCashOutCode' parameterOrder='generateCashOutCode'>
+   <input message='tns:KonikWs_generateCashOutCode'></input>
+   <output message='tns:KonikWs_generateCashOutCodeResponse'></output>
+  </operation>
+  <operation name='getAccountBalance' parameterOrder='getAccountBalance'>
+   <input message='tns:KonikWs_getAccountBalance'></input>
+   <output message='tns:KonikWs_getAccountBalanceResponse'></output>
+  </operation>
+  <operation name='getAvailableCashDepositIssuers' parameterOrder='getAvailableCashDepositIssuers'>
+   <input message='tns:KonikWs_getAvailableCashDepositIssuers'></input>
+   <output message='tns:KonikWs_getAvailableCashDepositIssuersResponse'></output>
+  </operation>
+  <operation name='getBillCustomerName' parameterOrder='getBillCustomerName'>
+   <input message='tns:KonikWs_getBillCustomerName'></input>
+   <output message='tns:KonikWs_getBillCustomerNameResponse'></output>
+  </operation>
+  <operation name='getBillPaymentBalanceDue' parameterOrder='getBillPaymentBalanceDue'>
+   <input message='tns:KonikWs_getBillPaymentBalanceDue'></input>
+   <output message='tns:KonikWs_getBillPaymentBalanceDueResponse'></output>
+  </operation>
+  <operation name='getDistributionChannels' parameterOrder='getDistributionChannels'>
+   <input message='tns:KonikWs_getDistributionChannels'></input>
+   <output message='tns:KonikWs_getDistributionChannelsResponse'></output>
+  </operation>
+  <operation name='getLastVouchersPurchased' parameterOrder='getLastVouchersPurchased'>
+   <input message='tns:KonikWs_getLastVouchersPurchased'></input>
+   <output message='tns:KonikWs_getLastVouchersPurchasedResponse'></output>
+  </operation>
+  <operation name='getPRNData' parameterOrder='getPRNData'>
+   <input message='tns:KonikWs_getPRNData'></input>
+   <output message='tns:KonikWs_getPRNDataResponse'></output>
+  </operation>
+  <operation name='getVouchers' parameterOrder='getVouchers'>
+   <input message='tns:KonikWs_getVouchers'></input>
+   <output message='tns:KonikWs_getVouchersResponse'></output>
+  </operation>
+  <operation name='getVouchersWithUnits' parameterOrder='getVouchersWithUnits'>
+   <input message='tns:KonikWs_getVouchersWithUnits'></input>
+   <output message='tns:KonikWs_getVouchersWithUnitsResponse'></output>
+  </operation>
+  <operation name='processBankToWallet' parameterOrder='processBankToWallet'>
+   <input message='tns:KonikWs_processBankToWallet'></input>
+   <output message='tns:KonikWs_processBankToWalletResponse'></output>
+  </operation>
+  <operation name='processCashDeposit' parameterOrder='processCashDeposit'>
+   <input message='tns:KonikWs_processCashDeposit'></input>
+   <output message='tns:KonikWs_processCashDepositResponse'></output>
+  </operation>
+  <operation name='processCashOut' parameterOrder='processCashOut'>
+   <input message='tns:KonikWs_processCashOut'></input>
+   <output message='tns:KonikWs_processCashOutResponse'></output>
+  </operation>
+  <operation name='processCustomerPayment' parameterOrder='processCustomerPayment'>
+   <input message='tns:KonikWs_processCustomerPayment'></input>
+   <output message='tns:KonikWs_processCustomerPaymentResponse'></output>
+  </operation>
+  <operation name='processZRAPayment' parameterOrder='processZRAPayment'>
+   <input message='tns:KonikWs_processZRAPayment'></input>
+   <output message='tns:KonikWs_processZRAPaymentResponse'></output>
+  </operation>
+  <operation name='processZRARentPayment' parameterOrder='processZRARentPayment'>
+   <input message='tns:KonikWs_processZRARentPayment'></input>
+   <output message='tns:KonikWs_processZRARentPaymentResponse'></output>
+  </operation>
+  <operation name='purchaseVoucher' parameterOrder='purchaseVoucher'>
+   <input message='tns:KonikWs_purchaseVoucher'></input>
+   <output message='tns:KonikWs_purchaseVoucherResponse'></output>
+  </operation>
+  <operation name='purchaseZescoVoucher' parameterOrder='purchaseZescoVoucher'>
+   <input message='tns:KonikWs_purchaseZescoVoucher'></input>
+   <output message='tns:KonikWs_purchaseZescoVoucherResponse'></output>
+  </operation>
+  <operation name='queryCustomerPayment' parameterOrder='queryCustomerPayment'>
+   <input message='tns:KonikWs_queryCustomerPayment'></input>
+   <output message='tns:KonikWs_queryCustomerPaymentResponse'></output>
+  </operation>
+  <operation name='queryTransactionStatus' parameterOrder='queryTransactionStatus'>
+   <input message='tns:KonikWs_queryTransactionStatus'></input>
+   <output message='tns:KonikWs_queryTransactionStatusResponse'></output>
+  </operation>
+  <operation name='reconcile' parameterOrder='reconcile'>
+   <input message='tns:KonikWs_reconcile'></input>
+   <output message='tns:KonikWs_reconcileResponse'></output>
+  </operation>
+  <operation name='reverseCustomerPayment' parameterOrder='reverseCustomerPayment'>
+   <input message='tns:KonikWs_reverseCustomerPayment'></input>
+   <output message='tns:KonikWs_reverseCustomerPaymentResponse'></output>
+  </operation>
+  <operation name='validateVoucherPurchase' parameterOrder='validateVoucherPurchase'>
+   <input message='tns:KonikWs_validateVoucherPurchase'></input>
+   <output message='tns:KonikWs_validateVoucherPurchaseResponse'></output>
+  </operation>
+ </portType>
+ <binding name='KonikWsBinding' type='tns:KonikWs'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='checkCashOutCodeStatus'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='generateCashOutCode'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getAccountBalance'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getAvailableCashDepositIssuers'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getBillCustomerName'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getBillPaymentBalanceDue'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getDistributionChannels'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getLastVouchersPurchased'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPRNData'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getVouchers'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getVouchersWithUnits'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processBankToWallet'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processCashDeposit'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processCashOut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processCustomerPayment'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processZRAPayment'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processZRARentPayment'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='purchaseVoucher'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='purchaseZescoVoucher'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='queryCustomerPayment'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='queryTransactionStatus'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='reconcile'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='reverseCustomerPayment'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='validateVoucherPurchase'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='KonikWsService'>
+  <port binding='tns:KonikWsBinding' name='KonikWsPort'>
+   <soap:address location='http://543.cgrate.co.zm:55555/Konik/KonikWs'/>
+  </port>
+ </service>
+</definitions>
