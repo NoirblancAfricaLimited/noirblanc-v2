@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class BookingAdd extends Component
 {
-    public $type, $email;
+    public $type, $mobile;
     public Customer $customer;
     public Booking $booking;
     public Service $service;
@@ -21,7 +21,7 @@ class BookingAdd extends Component
         return [
             'customer.firstname' => 'required|string',
             'customer.lastname' => 'required|string',
-            'customer.email' => ['required', 'string', Rule::unique('customers', 'email')->ignore($this->customer->id)],
+            'customer.email' => ['nullable', 'string', Rule::unique('customers', 'email')->ignore($this->customer->id)],
             'customer.mobile' => ['required', 'string', 'phone:ZM,US', Rule::unique('customers', 'mobile')->ignore($this->customer->id)],
             'booking.start_at' => 'required',
 
@@ -44,12 +44,12 @@ class BookingAdd extends Component
     {
         $this->customer = new Customer();
         Validator::make(
-            ['email' => $this->email],
-            ['email' => 'required|email|exists:customers'],
-            ['required' => 'Please enter an E-mail', 'exists' => 'There is no customer with that E-mail'],
+            ['mobile' => $this->mobile],
+            ['mobile' => 'required|exists:customers'],
+            ['required' => 'Please enter Mobile', 'exists' => 'There is no customer with that Mobile'],
         )->validate();
 
-        $this->customer = Customer::where('email', $this->email)->first();
+        $this->customer = Customer::where('mobile', $this->mobile)->first();
     }
 
     public function save()

@@ -15,7 +15,7 @@
     </td>
     <td>
                             <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                             @money($service->price)
+                             {{money($service->price)}}
                             </span>
     </td>
 
@@ -24,6 +24,9 @@
     </td>
     <td>
         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{money($service->wallet_sum_balance ?? 0)}}</span>
+    </td>
+    <td>
+        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$service->reviews_count}}</span>
     </td>
 
     <td>

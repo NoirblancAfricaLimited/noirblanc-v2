@@ -90,31 +90,31 @@
         <div class="tab-content">
             <!--begin::Tab-->
             <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
-               <livewire:service.service-edit :service="$service"/>
+               <livewire:provider.service.service-edit :service="$service"/>
             </div>
             <!--end::Tab-->
 
             <!--begin::Tab-->
             <div class="tab-pane px-7" id="kt_user_edit_tab_2" role="tabpanel">
-             <livewire:booking.booking-index :service="$service"/>
+             <livewire:provider.booking.booking-index :service="$service"/>
             </div>
             <!--end::Tab-->
 
             <!--begin::Tab-->
             <div class="tab-pane px-7" id="kt_user_edit_tab_3" role="tabpanel">
-             <livewire:review.review-index :service="$service"/>
+             <livewire:provider.review.review-index :service="$service"/>
             </div>
             <!--end::Tab-->
 
             <!--begin::Tab-->
             <div class="tab-pane px-7" id="kt_user_edit_tab_4" role="tabpanel">
-                <livewire:gallery.gallery-index :service="$service"/>
+                <livewire:provider.gallery.gallery-index :service="$service"/>
             </div>
             <!--end::Tab-->
 
             <!--begin::Tab-->
             <div class="tab-pane px-7" id="kt_user_edit_tab_5" role="tabpanel">
-                <livewire:promo-code.promo-code-index :service="$service"/>
+                <livewire:provider.promo-code.promo-code-index :service="$service"/>
             </div>
             <!--end::Tab-->
         </div>

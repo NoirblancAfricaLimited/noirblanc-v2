@@ -22,7 +22,7 @@ class ServiceIndex extends Component
     {
         $services = $this->business->services()
             ->withSum('wallet','balance')
-            ->withCount(['bookings'])
+            ->withCount(['bookings','reviews'])
             ->get();
 
         $total_sales = $services->sum('wallet_sum_balance');

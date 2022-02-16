@@ -25,7 +25,14 @@ class BookingController extends Controller
      */
     public function index(Request $request, $service_id)
     {
-        $bookings = $request->user()->bookings()->where('service_id', $service_id)->get();
+        $bookings = $request->user()->bookings()->where('service_id', $service_id)->latest()->get();
+
+        return BookingResource::collection($bookings);
+    }
+
+    public function all(Request $request)
+    {
+        $bookings = $request->user()->bookings()->latest()->get();
 
         return BookingResource::collection($bookings);
     }

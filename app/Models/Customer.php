@@ -25,7 +25,8 @@ class Customer extends  Authenticatable implements  CustomerInterface
     ];
 
     protected $appends = [
-        'avatar'
+        'avatar',
+        'fullname'
     ];
 
     protected $hidden = [

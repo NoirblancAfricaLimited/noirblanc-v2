@@ -71,8 +71,8 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <input type="text" class="form-control  form-control-solid"
-                                   wire:model.defer="email" placeholder="Find Customer by E-mail"/>
-                            @error('email')
+                                   wire:model.defer="mobile" placeholder="Find Customer by Mobile"/>
+                            @error('mobile')
                             <span class="form-text text-danger">{{ $message }}</span>
                             @enderror
                         </div>

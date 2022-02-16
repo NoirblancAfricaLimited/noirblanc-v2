@@ -36,10 +36,14 @@
                 <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
                     <thead>
                     <tr class="text-uppercase">
-                        <th style="min-width: 250px" class="pl-7"><span
+                        <th class="align-top"><span
                                 class="text-dark-75">Name</span></th>
-                        <th style="min-width: 100px">Price</th>
-                        <th style="min-width: 100px">Description</th>
+                        <th  class="align-top">Description</th>
+
+                        <th  class="align-top">Price</th>
+                        <th  class="align-top">Bookings</th>
+                        <th  class="align-top">Sales</th>
+                        <th  class="align-top">Reviews</th>
 {{--                        <th style="min-width: 100px">Close At</th>--}}
 {{--                        <th style="min-width: 130px">status</th>--}}
                         <th style="min-width: 120px"></th>
@@ -47,7 +51,7 @@
                     </thead>
                     <tbody>
                     @foreach($services as $service)
-                        <livewire:service.service-index-table-item :service="$service" :key="$service->id"/>
+                        <livewire:provider.service.service-index-table-item :service="$service" :key="$service->id"/>
                     @endforeach
                     </tbody>
                 </table>

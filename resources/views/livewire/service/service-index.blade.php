@@ -177,6 +177,7 @@
                             <th  style="min-width: 100px">Price</th>
                             <th style="min-width: 100px">Bookings</th>
                             <th  style="min-width: 100px">Total Sales</th>
+                            <th  style="min-width: 100px">Total Reviews</th>
                             <th style="min-width: 130px">status</th>
                             <th style="min-width: 120px"></th>
                         </tr>

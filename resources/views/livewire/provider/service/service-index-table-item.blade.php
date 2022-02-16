@@ -7,11 +7,14 @@
             {{--            </div>--}}
 
             <div>
-                <a href="{{route('business.service.show',$service)}}"
+                <a href="{{route('provider.business.service.show',$service)}}"
                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$service->sub_category->name}}</a>
 {{--                <span class="text-muted font-weight-bold d-block">{{$service->category->name}}</span>--}}
             </div>
         </div>
+    </td>
+    <td>
+        <span class="text-wrap">{{$service->description}}</span>
     </td>
     <td>
                             <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
@@ -20,6 +23,15 @@
 {{--        <span class="text-muted font-weight-bold">--}}
 {{--                                @currency('USD')--}}
 {{--                            </span>--}}
+    </td>
+    <td>
+        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$service->bookings_count}}</span>
+    </td>
+    <td>
+        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{money($service->wallet_sum_balance ?? 0)}}</span>
+    </td>
+    <td>
+        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$service->reviews_count}}</span>
     </td>
 {{--    <td>--}}
 {{--                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">--}}
@@ -32,11 +44,9 @@
 {{-- {{$service->close_at}}                            </span>--}}
 
 {{--    </td>--}}
-    <td>
-        <span class="text-wrap">{{$service->description}}</span>
-    </td>
+
     <td class="text-right pr-0">
-        <a href="{{route('business.service.show',$service)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+        <a href="{{route('provider.business.service.show',$service)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary"><!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg--><svg
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
