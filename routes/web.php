@@ -18,30 +18,45 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::middleware(['guest:provider'])->group(function () {
+    /**
+     * @description The url the provider uses to login
+     */
     Route::get('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'login'])->name('provider.login');
     Route::post('/provider/login', [\App\Http\Controllers\Provider\ProviderController::class,'authenticate'])->name('provider.authenticate');
 });
 
+
 Route::prefix('provider')->name('provider.')->middleware(['auth:provider'])->group(function () {
-    //Businesses
+    /**
+     * @description Allows provider to edit their basic information
+     */
     Route::get('/business/{business}/edit', \App\Http\Livewire\Business\BusinessEdit::class)->name('business.edit');
+
+    /**
+     * @description Allows provider to view information about their business including services and statistics
+     */
     Route::get('/business/show', \App\Http\Livewire\Provider\Business\BusinessShow::class)->name('business.show');
+
+    /**
+     * @description View all the Services under a business
+     */
     Route::get('/business/service', \App\Http\Livewire\Provider\Service\ServiceIndex::class)->name('business.service.index');
+
+    /**
+     * @description show selected service which includes gallery,
+     */
     Route::get('/business/service/{service}/show', \App\Http\Livewire\Provider\Service\ServiceIndexShow::class)->name('business.service.show');
 });
 
 Route::middleware(['auth'])->group(function () {
-//    Route::get('/', \App\Http\Livewire\Business\BusinessIndex::class)->name('home');
 
     Route::get('/admin', \App\Http\Livewire\Admin\AdminIndex::class)->name('admin.index');
     Route::get('/admin/create', \App\Http\Livewire\Admin\AdminAdd::class)->name('admin.create');
 
     Route::get('/admin/{admin}/edit', \App\Http\Livewire\Admin\AdminEdit::class)->name('admin.edit');
 
-    //Providers
     Route::get('/provider', \App\Http\Livewire\Providers\ProviderIndex::class)->name('provider.index');
 
-    //Businesses
     Route::get('/business', \App\Http\Livewire\Business\BusinessIndex::class)->name('business.index');
     Route::get('/business/add', \App\Http\Livewire\Business\BusinessAdd::class)->name('business.create');
     Route::get('/business/{business}/edit', \App\Http\Livewire\Business\BusinessEdit::class)->name('business.edit');
