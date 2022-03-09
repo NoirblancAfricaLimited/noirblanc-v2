@@ -16,6 +16,7 @@
         "digikraaft/laravel-review-rating": "^2.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "gussrw/laravel-routes": "^1.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.13",

@@ -47,11 +47,12 @@ class Customer extends  Authenticatable implements  CustomerInterface
         return "{$this->firstname}, {$this->lastname}";
     }
 
+    public function getAvatarAttribute(){
+        return asset('media/users/default.jpg');
+    }
+
     public function bookings(){
         return $this->hasMany(Booking::class);
     }
 
-    public function getAvatarAttribute(){
-        return asset('media/users/default.jpg');
-    }
 }
